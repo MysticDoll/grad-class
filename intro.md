@@ -34,9 +34,24 @@ $\text{mod} p$ からなる整数の体である。
 しかしながら、もし $e > 1$ ならば、 $q$ は合成数で$\boldsymbol{Z}\_q$ は体ではない。
 
 例えば、 たとえ $p \neq 0 $だとしても、$\boldsymbol{Z}\_q$の中で$p^e = 0$であり、$p$は零因子となってしまう。
-これは$e > 1$に対して$F\_q \neq \boldsymbol{Z}\_q$を意味する。代わりに$F\_q$は、$\boldsymbol{Z}\_p$に既約多項式$f(x)$の根 $\alpha$ を付加したものとして得られる、
-ちょうど複素数体$\boldsymbol{C}$が$\boldsymbol{R}$に$f(x) = x^2 + 1$の根$i = \sqrt{-1}$を付加したものから得られるようなものである。
+これは$e > 1$に対して$F\_q \neq \boldsymbol{Z}\_q$を意味する。代わりに$F\_q$は、$\boldsymbol{Z}\_p$に既約多項式$f(x)$の解 $\alpha$ を添加したものとして得られる、
+ちょうど複素数体$\boldsymbol{C}$が$\boldsymbol{R}$に$f(x) = x^2 + 1$の解$i = \sqrt{-1}$を添加したものから得られるようなものである。
 
 $F\_q$の要素は、このとき $a\_0, a\_1, \cdots , a\_{e-1} \in \boldsymbol{Z}\_p$として、$a\_0 + a\_1 \alpha + \cdots + a\_{e-1} \alpha^{e-1}$ の形であり、明白に加算と減算の演算をもつ。
 
 このような要素2つの積は、$\alpha$の次数を下げるため、$f(\alpha) = 0$の方程式を用いてこの形式に入れることができる。$f(x)$は$F\_q$の零因子を避けるために既約多項式である必要がある。
+
+#### 例 6.2
+
+二次方程式 $f(x) = x^2 + x + 1$ は$\boldsymbol{Z}\_2$上の解を持たず($f(0) = f(1) = 1$なので)、
+よって一次の解を持たず、そして故に$\boldsymbol{Z}\_2$上で既約である。
+
+$\boldsymbol{Z}\_2$に解$\alpha$を添加することで、位数$q = 4$の体
+
+$$F\_4 = \lbrace a + b\alpha \mid a,b \in \boldsymbol{Z}\_2 \rbrace = \lbrace 0, 1, \alpha , 1 + \alpha \rbrace$$
+
+を得る。$\alpha^2 + \alpha + 1 = 0$ となるため、 $\alpha^2 = -1 - \alpha = 1 + \alpha$である。
+
+例えば、 $\alpha (1 + \alpha) = \alpha + \alpha^2 = 1 + 2 \alpha = 1$ なので、$\alpha$と$1 + \alpha$は$F\_4$上で互いに積の逆元となる。
+
+似たような有限体の構成については、演習問題6.16と6.17を見よ。
