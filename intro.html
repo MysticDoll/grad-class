@@ -206,5 +206,18 @@ $i = 1 \dots n$に対して$i$番目の要素が$au_i + bv_i$となる。</p>
 <p>以下のようにして線形符号に対するシャノンの基本定理の類似系を証明することが出来る。</p>
 <p>定理5.9の様にランダムな符号 $C \subseteq \mathcal{V}$をとる代わりに、$C \subseteq \mathcal{V}$の基底となるように$\mathcal{V}$の部分空間をとる。</p>
 <p>そして、$n \rightarrow \infty$ のとき$C$が要求される性質を持つことを示す。</p>
+<p>今後$\mid C \mid$を$M$で示す。 $C$が線形である場合、$k = \text{dim}(C)$を線形空間$C$の次元とすると、$M = q^k$となる。</p>
+<p>これはすべての$C$の要素は、$a_1 , \cdots , a_k \in F$ かつ $\boldsymbol{u}_1, \cdots \boldsymbol{u}_k \in C$の下、
+それぞれ一意な$a_1 \boldsymbol{u}_1 + \cdots + a_k \boldsymbol{u}_k$ なる式を持つ、
+更に、それぞれの$a_i$に対して独立した $\mid F \mid  = q$  の選択がある場合がある。</p>
+<p>このような符号を線形$\lbrack n,k \rbrack$符号と呼ぶ。</p>
+<p>符号$C$の伝送レートは</p>
+<p>$\frac{\text{log}_q M}{n}$</p>
+<p>で、線形$\lbrack n,k \rbrack$符号の場合は</p>
+<p>$\frac{k}{n}$</p>
+<p>となる。</p>
+<p>このことは、符号語の$n$桁のうち$k$桁を情報桁及び伝達したい情報を運ぶ部分とみなし、そして残りの$n-k$桁を検査桁(チェックディジット)とみなし、
+情報の確認あるいは保護をする部分として解釈できる。</p>
+<p>この先では、$C$中のすべての符号語が等しい確率で、($\mathcal{V}$上のハミング距離に関して)最近傍複合を使うものと仮定する。</p>
 
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script></body></html>
