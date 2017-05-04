@@ -147,10 +147,22 @@ sup {
 		page-break-inside: avoid;
 	}
 }
-</style></head><body><h2 id="-">教科書翻訳</h2>
-<p><a href="./intro.html">6.1 基本概念</a></p>
-<p><a href="./code_examples.html">6.2 符号の例</a></p>
-<h2 id="-">メモ資料</h2>
-<p><a href="./BSC.html">BSC,線形符号に対するシャノンの基本定理について</a></p>
+</style></head><body><h2 id="-binary-symmetric-channel-">二元対称通信路(Binary Symmetric Channel)</h2>
+<p>二元対称通信路$\Gamma$は入力と出力の情報源が$\mathcal{A} = \mathcal{B} = \boldsymbol{Z}_2 = \lbrace 0, 1 \rbrace$であり、ある確率$P$で入出力のアルファベットが正しく送信される通信路である。</p>
+<p>以下、$2$値確率変数の片方の確率を $0 \leq p \leq 1$ に対し、 $H(p) = -p \log p - \bar{p} \log \bar{p}$ のように記すことにする。</p>
+<p>入力文字と出力文字に対するエントロピーは、入力と出力での$0$の生起確率の確率をそれぞれ$p, q$とすると、</p>
+<p>それぞれ$H(\mathcal{A}) = H(p)$, $H(\mathcal{B}) = H(q)$ </p>
+<p>$H(\mathcal{B} \mid \mathcal{A}) \\
+ = \sum_{x \in \mathcal{B}} P_\mathcal{A} (x) H(\mathcal{B} \mid \mathcal{A} = x) \\
+ = p H(\mathcal{B} \mid \mathcal{A} = 0) + \bar{p} H(\mathcal{B} \mid \mathcal{A} = 1) \\
+ = p (- \sum_{x \in \mathcal{B}} \frac{P_{\mathcal{B},\mathcal{A}}(x, 0)}{P_\mathcal{A} (0)} \log \frac{P_{\mathcal{B},\mathcal{A}}(x, 0)}{P_\mathcal{A} (0)}) + \bar{p} (- \sum_{x \in \mathcal{B}} \frac{P_{\mathcal{B},\mathcal{A}}(x, 1)}{P_\mathcal{A} (1)} \log \frac{P_{\mathcal{B},\mathcal{A}}(x, 1)}{P_\mathcal{A} (1)}) \\
+ = p (- \frac{pP}{p} \log \frac{pP}{p} - \frac{p\bar{P}}{p} \log \frac{p\bar{P}}{p}) + \bar{p} (- \frac{\bar{p}P}{\bar{p}} \log \frac{\bar{p}P}{\bar{p}} - \frac{p\bar{P}}{\bar{p}} \log \frac{\bar{p}\bar{P}}{\bar{p}}) \\
+ = - (p P \log P + p \bar{P} \log \bar{P} + \bar{p} P \log P + \bar{p} \log \bar{P}) \\
+ = - p (P \log P + \bar{P} \log \bar{P}) - \bar{p} (P \log P + \bar{P} \log \bar{P}) \\
+ = - P \log P - \bar{P} \log \bar{P} = H(P)$</p>
+<p>相互情報量 $I(\mathcal{A} ; \mathcal{B}) = I(\mathcal{B}; \mathcal{A}) = H(\mathcal{B} \mid \mathcal{A}) - H(\mathcal{B}) = H(q) - H(P)$ より</p>
+<p>通信路容量$C$は相互情報量を最大化する値なので、$C = 1 - H(P)$ ($P$を固定すると、$H(q)$が最大になるとき相互情報量は最大になる。)</p>
+<p>BSCではシャノンの基本定理を満たす線形符号が存在する。教科書5.4では送信レート$R$に対して$2^{nR}$個の符号語を持つ符号をランダムにとって証明の概略を説明している。</p>
+<p>ここで、$R = \frac{k}{n}$として、$q^k = 2^k$個の符号語を持つ符号について考えても一般性を失わないため、線形符号に対してもシャノンの基本定理の類似系を満たすと言える。</p>
 
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script></body></html>

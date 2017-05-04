@@ -101,9 +101,9 @@ $i = 1 \dots n$に対して$i$番目の要素が$au\_i + bv\_i$となる。
 
 今後$\mid C \mid$を$M$で示す。 $C$が線形である場合、$k = \text{dim}(C)$を線形空間$C$の次元とすると、$M = q^k$となる。
 
-これはすべての$C$の要素は、$a\_1 , \cdots , a\_k \in F$ かつ $\boldsymbol{u}\_1, \cdots \boldsymbol{u}\_k \in C$の下、
-それぞれ一意な$a\_1 \boldsymbol{u}\_1 + \cdots + a\_k \boldsymbol{u}\_k$ なる式を持つ、
-更に、それぞれの$a\_i$に対して独立した $\mid F \mid  = q$  の選択がある場合がある。
+すべての$C$の要素は、$a\_1 , \cdots , a\_k \in F$ かつ $\boldsymbol{u}\_1, \cdots \boldsymbol{u}\_k \in C$の下、
+それぞれ一意な$a\_1 \boldsymbol{u}\_1 + \cdots + a\_k \boldsymbol{u}\_k$ なる式を持ち、
+更に、それぞれの$a\_i$に対して独立した $\mid F \mid  = q$  の選択がある場合があるからである。
 
 このような符号を線形$\lbrack n,k \rbrack$符号と呼ぶ。
 
