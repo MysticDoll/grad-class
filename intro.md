@@ -109,11 +109,11 @@ $i = 1 \dots n$に対して$i$番目の要素が$au\_i + bv\_i$となる。
 
 符号$C$の伝送レートは
 
-$\frac{\text{log}\_q M}{n}$
+$\frac{\text{log}\_q M}{n} \ \text{(6.1)}$
 
 で、線形$\lbrack n,k \rbrack$符号の場合は
 
-$\frac{k}{n}$
+$\frac{k}{n} \ \text{(6.2)}$
 
 となる。
 
