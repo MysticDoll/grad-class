@@ -85,7 +85,7 @@ $i = 1 \dots n$に対して$i$番目の要素が$au\_i + bv\_i$となる。
 このことは$C$が空集合でなく、更に$\boldsymbol{u}, \boldsymbol{v} \in C$ならば
 任意の$a, b \in F$に対して、 $a \boldsymbol{u} + b \boldsymbol{v} \in C$となることを意味している。
 
-特に、すべての線形符号は零ベクトル$\boldsymbol{0} = 00000\dots$を含んでいる。
+特に、すべての線形符号は零ベクトル$\boldsymbol{0} = 000\dots0$を含んでいる。
 なぜなら任意の$\boldsymbol{u}, \boldsymbol{v} \in C$に対して$\boldsymbol{0} = 0 \boldsymbol{u} + 0 \boldsymbol{v}$
 だからである。
 
@@ -103,7 +103,7 @@ $i = 1 \dots n$に対して$i$番目の要素が$au\_i + bv\_i$となる。
 
 すべての$C$の要素は、$a\_1 , \cdots , a\_k \in F$ かつ $\boldsymbol{u}\_1, \cdots \boldsymbol{u}\_k \in C$の下、
 それぞれ一意な$a\_1 \boldsymbol{u}\_1 + \cdots + a\_k \boldsymbol{u}\_k$ なる式を持ち、
-更に、それぞれの$a\_i$に対して独立した $\mid F \mid  = q$  の選択がある場合があるからである。
+更に、それぞれの$a\_i$に対して独立した $\mid F \mid  = q$ 通りの選択があるからである。
 
 このような符号を線形$\lbrack n,k \rbrack$符号と呼ぶ。
 

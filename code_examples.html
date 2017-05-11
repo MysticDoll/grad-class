@@ -156,11 +156,11 @@ sup {
 <p>よって、$M = \mid F \mid = q$である。</p>
 <p>もし$F$が体ならば$\mathcal{R}_n$は$11\dots 1$なる符号語(あるいはベクトル)の張る次元$1$の線形符号になる。</p>
 <p>図6.1は$\mathcal{V} = F^3$の部分空間として$\mathcal{R}_3$なる二元符号を示している。黒い点が$\mathcal{R}_3$の符号語である。</p>
-<p>5章では$q = 2$で$n$が偶数の場合、$\boldsymbol{R}_n$は$(n -1) /2$個の誤りを訂正したのを見た。</p>
+<p>5章では$q = 2$で$n$が奇数の場合、$\mathcal{R}_n$は$(n -1) /2$個の誤りを訂正したのを見た。</p>
 <p>このことから、$\boldsymbol{u} \in \mathcal{R}_n$が伝送され、それらの$n$個のシンボルのうち、多くとも$(n-1)/2$個が誤って伝送されたとき、
 最近傍復号は常に正しくなる。</p>
 <p>似たような議論によって、どんな$q$と$n$に対しても、</p>
-<p>$\lfloor x \rfloor = \max {\lbrace M \in \boldsymbol{Z} \mid m \leq x \rbrace}$</p>
+<p>$\lfloor x \rfloor = \max {\lbrace m \in \boldsymbol{Z} \mid m \leq x \rbrace}$</p>
 <p>として、最近傍復号を使えば$\mathcal{R}_n$は$\lfloor (n - 1) / 2 \rfloor$個の誤りを訂正することが言える。</p>
 <p>これは素晴らしいが、運の悪いことに式(6.2)によって$n \rightarrow \infty$のとき伝送速度$R = 1 / n = 0$となり、良くないことが言える。</p>
 <h3 id="-6-4-">例6.4(パリティ検査符号)</h3>
@@ -181,5 +181,12 @@ $\sum_i u_i = 0$から$\sum_i v_i \neq 0$である。</p>
 <p>このとき受信者は$\boldsymbol{v}$が符号語でないことと1つの誤りがあることを知っている。
 しかし、どの1桁を変更することによっても符号語を得ることができるので、どの桁が間違っているかを判断する方法はない。</p>
 <p>更に悪いことに、$\boldsymbol{v}$の2つ及びそれ以上の相殺される誤りは検知できない。</p>
+<h2 id="-6-5-2-">例6.5(2元ハミング符号)</h2>
+<p>2元ハミング符号$\mathcal{H}_7$は符号長$7$、$F_2$上の線形符号である。</p>
+<p>これは最初に発見された誤り訂正符号の一つで、1947年にベル研究所の計算機がしばしばクラッシュすることに腹を立てていたハミングという技術者によって導入された。(<code>Ha47</code>, <code>Ha50</code>, <code>Sh48</code>)
+(初期の誤り訂正の歴史に関する報告については<code>[Th83]</code>を見よ)</p>
+<p>この符号を構成するには、$3$つの集合$A,B,C$ のベン図を表した図6.3を用いる。$\bar A \cap \bar B \cap C, \bar A \cap B \cap \bar C, \bar A \cap B \cap C, A \cap \bar B \cap \bar C, A \cap \bar B \cap C, A \cap B \cap \bar C, A \cap B \cap C$
+に対応する領域に $1, 2, \dots , 7$ と番号をつける。このように領域の番号$i$は$A,B,C$が含まれる場合それぞれ$a, b, c$が1になるとして、整数$i = 4 a + 2 b + c$の2進数表現$abc$に対応する。</p>
+<p>例えば$5$は2進数表現で$101$と書ける、よってこれは$A \cap \bar B \cap C$に対応し、一方で$\bar A \cap B \cap \bar C$は$2$の二進数表現$010$に対応している。</p>
 
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script></body></html>
