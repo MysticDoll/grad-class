@@ -1,10 +1,32 @@
 ## 二元対称通信路(Binary Symmetric Channel)
 
 二元対称通信路$\Gamma$は入力と出力の情報源が$\mathcal{A} = \mathcal{B} = \boldsymbol{Z}\_2 = \lbrace 0, 1 \rbrace$であり、ある確率$P$で入出力のアルファベットが正しく送信される通信路である。
+($\therefore$ 誤って転送される確率は$\bar P = 1 - P$)
+
+$
+\begin{array}{ccc}
+  \mathcal{A} & \overset{\Gamma}{\rightarrow} & \mathcal{B}
+\end{array}
+$
+
+### 伝送のパターン
+$
+\begin{cases}
+  0           & \overset{P}{\rightarrow} & 0 \\\\
+  1           & \overset{P}{\rightarrow} & 1 \\\\
+  0           & \overset{\bar P}{\rightarrow} & 1 \\\\
+  1           & \overset{\bar P}{\rightarrow} & 0
+\end{cases}
+$
 
 以下、$2$値確率変数の片方の確率を $0 \leq p \leq 1$ に対し、 $H(p) = -p \log p - \bar{p} \log \bar{p}$ のように記すことにする。
 
-入力文字と出力文字に対するエントロピーは、入力と出力での$0$の生起確率の確率をそれぞれ$p, q$とすると、
+入力文字と出力文字に対するエントロピーは、入力と出力での$0$の生起確率の確率をそれぞれ$p, q$とすると、$\mathcal{A}, \mathcal{B}$それぞれでの各シンボルの生起確率は
+
+|$x \in \boldsymbol{Z}\_2$|$\text{Pr}\_\mathcal{A} (x)$|$\text{Pr}\_\mathcal{B} (x)$     |
+|:-----------------------:|:--------------------------:|:-------------------------------:|
+|$0$                      |$p$                         |$q = pP + \bar{p} \bar{P}$       |
+|$1$                      |$\bar{p}$                   |$\bar{q} = p \bar{P} + \bar{p} P$|
 
 それぞれ$H(\mathcal{A}) = H(p)$, $H(\mathcal{B}) = H(q)$ 
 

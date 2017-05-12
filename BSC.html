@@ -148,9 +148,45 @@ sup {
 	}
 }
 </style></head><body><h2 id="-binary-symmetric-channel-">二元対称通信路(Binary Symmetric Channel)</h2>
-<p>二元対称通信路$\Gamma$は入力と出力の情報源が$\mathcal{A} = \mathcal{B} = \boldsymbol{Z}_2 = \lbrace 0, 1 \rbrace$であり、ある確率$P$で入出力のアルファベットが正しく送信される通信路である。</p>
+<p>二元対称通信路$\Gamma$は入力と出力の情報源が$\mathcal{A} = \mathcal{B} = \boldsymbol{Z}_2 = \lbrace 0, 1 \rbrace$であり、ある確率$P$で入出力のアルファベットが正しく送信される通信路である。
+($\therefore$ 誤って転送される確率は$\bar P = 1 - P$)</p>
+<p>$
+\begin{array}{ccc}
+  \mathcal{A} &amp; \overset{\Gamma}{\rightarrow} &amp; \mathcal{B}
+\end{array}
+$</p>
+<h3 id="-">伝送のパターン</h3>
+<p>$
+\begin{cases}
+  0           &amp; \overset{P}{\rightarrow} &amp; 0 \\
+  1           &amp; \overset{P}{\rightarrow} &amp; 1 \\
+  0           &amp; \overset{\bar P}{\rightarrow} &amp; 1 \\
+  1           &amp; \overset{\bar P}{\rightarrow} &amp; 0
+\end{cases}
+$</p>
 <p>以下、$2$値確率変数の片方の確率を $0 \leq p \leq 1$ に対し、 $H(p) = -p \log p - \bar{p} \log \bar{p}$ のように記すことにする。</p>
-<p>入力文字と出力文字に対するエントロピーは、入力と出力での$0$の生起確率の確率をそれぞれ$p, q$とすると、</p>
+<p>入力文字と出力文字に対するエントロピーは、入力と出力での$0$の生起確率の確率をそれぞれ$p, q$とすると、$\mathcal{A}, \mathcal{B}$それぞれでの各シンボルの生起確率は</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$x \in \boldsymbol{Z}_2$</th>
+<th style="text-align:center">$\text{Pr}_\mathcal{A} (x)$</th>
+<th style="text-align:center">$\text{Pr}_\mathcal{B} (x)$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$0$</td>
+<td style="text-align:center">$p$</td>
+<td style="text-align:center">$q = pP + \bar{p} \bar{P}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$1$</td>
+<td style="text-align:center">$\bar{p}$</td>
+<td style="text-align:center">$\bar{q} = p \bar{P} + \bar{p} P$</td>
+</tr>
+</tbody>
+</table>
 <p>それぞれ$H(\mathcal{A}) = H(p)$, $H(\mathcal{B}) = H(q)$ </p>
 <p>$H(\mathcal{B} \mid \mathcal{A}) \\
  = \sum_{x \in \mathcal{B}} P_\mathcal{A} (x) H(\mathcal{B} \mid \mathcal{A} = x) \\
