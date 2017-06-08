@@ -1,0 +1,188 @@
+<html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=yes'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"><style>h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;
+}
+
+a {
+    color: #0069d6;
+    text-decoration: none;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+    background-color: #f5f4ea;
+}
+code {
+    background-color: #f5f4ea;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #f5f4ea;
+    color:#454545;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style></head><body><h2 id="6-3-">6.3 最小距離</h2>
+<p>最近傍復号法を用いるとき、送信された符号語$\boldsymbol{u}$は受信語$\boldsymbol{v} \in \mathcal{V}$から最も近い符号語$\Delta (\boldsymbol{v})$になるため、
+他の符号語から互いに離れた符号語$\boldsymbol{u}$を用いることで誤り確率$\text{Pr}_E$を低く保つことができる。</p>
+<p>よって、$C$の最小距離を任意の異なる2つの符号語のハミング距離の最小値</p>
+<p>$d = d(C) = \min \lbrace d(\boldsymbol{u}, \boldsymbol{u}^\prime) \mid \boldsymbol{u}, \boldsymbol{u}^\prime \in C, \ \boldsymbol{u} \neq \boldsymbol{u}^\prime \rbrace \ \ \text{(6.3)}$</p>
+<p>として定める。</p>
+<p>ある符号が符号長$n$、符号語数$M$で最小距離$d$のとき、これを$(n, M, d)$符号と呼ぶことがある。
+もし符号が線形で次元が$k$ならば、これは$\lbrack n, k, d \rbrack$符号と呼ばれる。</p>
+<p>我々の目的は$\text{Pr}_E$を小さくするために、符号語$C$を$d$が大きくなるように選ぶことである。</p>
+<p>もし、$C$が$M$個の符号語を持つ場合、$\text{(6.3)}$を用いて$d$を求めることは、$\begin{pmatrix} M \\ 2 \end{pmatrix} = M(M - 1)/2$通りの距離の計算と比較を要求する。
+これはとてもうんざりする。</p>
+<p>しかしながら、この作業は$C$が線形の場合次に示すようにとても単純になる。</p>
+<p>まず、任意のベクトル$\boldsymbol{v} = v_1 v_2 \dots v_n \in \mathcal{V}$に対する重みを、$\boldsymbol{0} = 00 \dots 0$として以下のように定義する。</p>
+<p>$\text{wt} (\boldsymbol{v}) = d(\boldsymbol{v}, \boldsymbol{0}) \ \ \text{(6.4)}$</p>
+<p>言い換えると、$\text{wt} (\boldsymbol{v})$は単純に$v_i \neq 0$となるような添字$i$の数である。
+任意の$\boldsymbol{u}, \boldsymbol{u}^\prime \in \mathcal{V}$に対して、</p>
+<p>$d(\boldsymbol{u}, \boldsymbol{u}^\prime) = \text{wt}(\boldsymbol{u} - \boldsymbol{u}^\prime)$ </p>
+<p>となることは容易にわかる。</p>
+<h3 id="-6-8">系6.8</h3>
+<p>$C$が線形符号のとき、その最小距離$d$は</p>
+<p>$d = min \lbrace \text{wt} (\boldsymbol{v}) \mid \boldsymbol{v} \in C , \ \boldsymbol{v} \neq \boldsymbol{0} \rbrace$</p>
+<p>で与えられる。</p>
+<h4 id="-">証明</h4>
+<p>$\boldsymbol{v} = \boldsymbol{u} - \boldsymbol{u}^\prime$の下、$d(\boldsymbol{u}, \boldsymbol{u}^\prime) = \text{wt} (\boldsymbol{v})$とする。
+今、$C$は$\mathcal{V}$の線形部分空間なので、$\boldsymbol{u}$と$\boldsymbol{u}^\prime$が全ての$C$内の異なる組み合わせに及ぶと、
+それらの差$\boldsymbol{v} = \boldsymbol{u} - \boldsymbol{u}^\prime$は$C$の全ての非零な要素に及ぶ。</p>
+<p>これは$d(C)$なるこのような$\boldsymbol{u}, \boldsymbol{u}^\prime$の組の間の最小距離は、これらの重み$\text{wt} (\boldsymbol{v})$に等しくなる。</p>
+<p>この結果の利点は、非線型な符号で$M(M-1)/2$回の計算と比較をする場合に比べて、$M-1$回の計算と比較で済むことである。
+$\S \text{7.3}$では、より良い線形符号の最小距離計算の方法があることを確認する。</p>
+<h3 id="-6-3">練習 6.3</h3>
+<p>二元ハミング符号$\mathcal{H}_7$(例6.5)の符号語を全て列挙せよ。そして系6.8を用いて最小距離が3であることを確認せよ。</p>
+<h3 id="-6-4">練習 6.4</h3>
+<p>$C$が最小距離$d$の二元線形符号のとき、拡大符号$\bar{C}$は$d$が偶数または奇数に応じて、それぞれ$d$または$d + 1$なる最小距離を持つことを示せ。
+拡大二元ハミング符号$\bar{\mathcal{H}_7}$の符号語を列挙し、その最小距離を求めよ。</p>
+<p>今どのように符号の最小距離がその符号の誤り訂正能力に影響するかを考える。
+符号$C$は$t$個の誤りを訂正する、または$t$重誤り訂正とは、符号語$\boldsymbol{u} \in C$が伝送され、多くとも$t$個のシンボルが誤って受信された場合はいつでも結果として受信語$\boldsymbol{v}$は正しく$\boldsymbol{u}$として復号されることを言う。
+これは$\boldsymbol{u} \in C$かつ$\boldsymbol{v} \in \mathcal{V}$で、$d(\boldsymbol{u}, \boldsymbol{v}) \leq t$を満たす場合いつでも、決定則$\Delta$が$\Delta (\boldsymbol{v}) = \boldsymbol{u}$を与えることと同値である。</p>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script></body></html>
