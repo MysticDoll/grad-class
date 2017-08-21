@@ -1,0 +1,27 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[truedimen,margin=25truemm]{geometry}
+\usepackage{amsmath}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amssymb}
+
+\begin{document}
+  \subsection*{6.5 Gilbert-Varshamov限界}
+    
+    良い誤り訂正能力を維持しながら、伝達速度$R = \frac{1}{n} \log_q M$を最大化するために、与えられた$q, n$及び$t $ (または同値な$d$)に対して、可能な限り大きい値$M = \mid C \mid $となる符号を探すことは興味深い。
+    $A_q (n, d)$を任意の符号長$n$、最小距離$d$の$q$元符号の符号語数の最大値と置く。ここで$d \leq n$である。
+    ハミングの球充填限界式 (定理6.15)から$A_q (n, d)$の上限は次のように与えられる。
+
+    \[A_q (n, d) \big(1 + \binom n1 (q - 1) + \binom n2 {(q - 1)}^2 + \cdots + \binom nt {(q - 1)}^t \big) \leq q^n\]
+
+    ここで、定理6.10から$t = \lfloor (d - 1) / 2 \rfloor$である。
+
+    \subsubsection*{例 6.20}
+      
+    $q = 2$と$d = 3$の場合、$t = 1$で、例6.16で見たように、$A_2 (n, 3) \leq \lfloor 2^n / (n + 1) \rfloor$である。
+    よって、$n = 3, 4, 5, 6, 7, \dots $に対して、$A_2 (n, 3) = 2, 3, 5, 9, 16, \dots $である。
+
+      \paragraph{練習 6.9}
+        
+      例6.20で$A_2 (n, 3)$の上限を求めたように、$A_3(n, 3)$の上限を求めよ。
+      ハミングの球充填限界式は$A_2 (n, 4)$と$A_2 (n,4)$に関して何を意味するか？
+\end{document}
