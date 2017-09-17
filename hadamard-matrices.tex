@@ -1,0 +1,129 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[truedimen,margin=25truemm]{geometry}
+\usepackage{amsmath}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amssymb}
+
+\begin{document}
+  \subsection*{アダマール行列と符号}
+    多くの数学的構造は符号を作るために利用できる。ある興味深い種類の符号はアダマール行列と呼ばれる行列から作れる。
+    最初にこれらの行列の初歩的な性質について調べよう (詳細は[Ha67, MS77]を見よ) \\
+
+    アダマールは与えられた各$n$に対して、$n \times n$実行列$H$の行列式がどれだけ大きく出来るかに興味を持った。
+    この問題に意味づけるために$H$の要素に制限が必要であるが、
+    全ての$i, j$に対して、$\mid h_{ij} \mid \leq 1$としても一般性を失わない。
+    これらの条件の下、アダマールは$\mid \det H \mid \leq n^{n/2}$が
+    \begin{itemize}
+      \item[(a)] 各$h_{ij} = \pm 1$ かつ
+      \item[(b)] $H$の相異なる行$\mathbf{r}_i$は直交する、つまり$i \neq j$なる全ての$i, j$に対し、$\mathbf{r}_i \ldotp \mathbf{r}_j = 0$
+    \end{itemize}
+    の必要十分条件であることを証明した。 \\
+
+    (a) 及び (b) を満たす$n \times n$行列$H$は、$n$次アダマール行列と呼ばれる。
+    (a)は全ての$i$に対して$\mathbf{r}_i \ldotp \mathbf{r}_j = n$を意味し、$H H^T$が対角行列
+    \[ H H^T = \begin{pmatrix}
+        n & 0 & \cdots & 0 \\
+        0 & n & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & n
+    \end{pmatrix} = n I_n; \eqno{ (6.8)}\]
+    であることがわかる。ここで、$H^T$は$H$の転地行列を意味し、$I_n$は$n \times n$の単位行列である。
+    $\det H^T = \det H$より、 (6.8)から
+    \[ {(\det H)}^2 = \det (nI_n) = n^n \]
+    よって、$\mid \det H \mid = n^{n/2}$である。
+    このことから、全てのアダマール行列はアダマールの上界に達する。
+    この逆の証明は難しく、ここでは必要ないので省略する。
+
+    見やすさと印刷上の理由により、以下ではアダマール行列の$-1$の成分を単に$-$と記述する。
+
+    \subsubsection*{例 6.23}
+      行列$H = \begin{pmatrix} 1 \end{pmatrix}$と$\begin{pmatrix} 1 & 1 \\ 1 & -\end{pmatrix}$はそれぞれ$1$次と$2$次のアダマール行列で、$\mid \det H \mid = 1$及び$2$である。
+
+      \paragraph{練習 6.12}
+        全ての$1$次及び$2$次のアダマール行列を求めよ。 \\
+
+    次の簡単な結果によって、大きなアダマール行列を小さなアダマール行列から作ることが出来る。
+
+    \subsubsection*{補題 6.24}
+      $H$を$n$次のアダマール行列とおく、そして$H^\prime$を
+      \[H^\prime = \begin{pmatrix} H & H \\ H & -H\end{pmatrix}\]
+      と置く。このとき、$H^\prime$は$2n$次のアダマール行列となる。
+
+      \paragraph{練習 6.13}
+        補題 6.24を証明せよ。
+
+    \subsubsection*{系 6.25}
+      各$m \geq 0$に対して$2^m$次のアダマール行列が存在する。
+      
+      \paragraph{証明}
+        $H = \begin{pmatrix}  1\end{pmatrix}$から始め、補題 6.24を$m$回適用すれば良い。
+
+    \subsubsection*{例 6.26}
+      この方法で得られる $2^m$次のアダマール行列はシルベスター行列 (Sylvester matrices)と呼ばれている。
+      例えば$m = 1$を取ると、$\begin{pmatrix} 1 & 1 \\ 1 & - \end{pmatrix}$を与え、そして$m = 2$に対して以下を得る。
+      \[ \begin{pmatrix}
+          1 & 1 & 1 & 1 \\
+          1 & - & 1 & - \\
+          1 & 1 & - & - \\
+          1 & - & - & 1
+      \end{pmatrix} \]
+
+      しかしながら、アダマール行列は全ての次数で存在するわけではない。例えば$n > 1$なる奇数次のアダマール行列は存在しない。
+
+    \subsubsection*{補題 6.27}
+      $n > 1$なる$n$次のアダマール行列$H$が存在する場合、$n$は偶数である。
+
+      \paragraph{証明}
+        直交する異なる行$\mathbf{r}_i$と$\mathbf{r}_j$は$h{i1}h_{ji} + \cdots + h_{in}h_{jn} = 0$を与える。
+        それぞれの$h_{ik}h_{jk} = \pm1$で、よって$n$は偶数でなければならない。
+
+    \subsubsection*{補題 6.28}
+      $n > 2$なる$n$次のアダマール行列$H$が存在する場合、$n$は$4$で割り切れる。
+
+      \paragraph{証明}
+        $H$の任意の列に$-1$を書けてもアダマール行列の性質は失われないので、最初の行の成分は全て$1$と仮定して良い。
+        各行$\mathbf{r}_i \ (i \neq 1)$は$\mathbf{r}_1$と直交するので、$n/2$個の要素は$1$で、残りの$n/2$個の要素は$-1$である。
+        列を交換すると (これもまたアダマール行列の性質を失わない) 、以下のように仮定できる
+        \[ \mathbf{r}_2 = \begin{pmatrix} 1 & 1 & \ldots & 1 & -1 & -1 & \ldots & -1 \end{pmatrix} \]
+        $\mathbf{r}_3$の列の最初と最後の$n/2$個を要素がそれぞれ$1$を$u$個と$v$個含むとする (そして残りの要素が$-1$となる)。 このとき
+        \[0 = \mathbf{r}_1 \ldotp \mathbf{r}_3 = u - \big( \frac n2 - u \big) + v - \big( \frac n2 - v \big) = 2u + 2v - n\]
+        さらに、
+        \[ 0 = \mathbf{r}_2 \ldotp \mathbf{r}_3 = u - \big( \frac n2 - u \big) - v + \big( \frac n2 - v \big) = 2u - 2v \]
+        よって、$u = v$で、それゆえに$n = 2u + 2v = 4u$は$4$で割り切れる。
+        
+      この逆、つまり$4$で割り切れる$n$に対して、$n$次のアダマール行列が存在することが推測できる。
+      これは未だに未解決問題である。符号理論とアダマール行列の関係性は次の結果に基づいている。
+
+    \subsubsection*{定理 6.29}
+      それぞれ$n$次のアダマール行列$H$から符号長$n$で符号語数$M = 2n$、最小距離$n/2$の二元符号を構成できる。
+
+      \paragraph{証明}
+        まず$2n$個のベクトル$\pm\mathbf{r}_1 , \ldots , \pm\mathbf{r}_n \in \mathbf{R}^n$を$H$の各行$\mathbf{r}_i$から構成できる。
+        行の直交性からこれらのベクトルは全て互いに素である。$-1$の要素を$0$に着替えることにより、$0, 1$の要素からなる$2n$個のベクトルを得る。
+        これらのベクトルは$\mathcal{V} = \mathbf{F}_2^n$の元とみなすことが出来るので、これらは2元符号$C$となる。
+        以上の構成法によって
+        これらの符号語は$\bar{\mathbf{u}_i} = \mathbf{1} - \mathbf{u}_i$ のもと $\mathbf{u}_1, \bar{\mathbf{u}_1}, \ldots , \mathbf{u}_n, \bar{\mathbf{u}_n}$の形になる。
+        任意の$i$に対して$\mathbf{u}_i$と$\bar{\mathbf{u}_i}$は全ての$n$個の位置が異なっているため、$d(\mathbf{u}_i, \bar{\mathbf{u}_i}) = n$となり、
+        条件 (b) から容易に全ての相異なる符号語の組は$n/2$だけ離れていることがいえるので、$C$は最小距離$d = n / 2$を持つ。
+
+        \subparagraph{練習 6.14}
+          例 6.26のアダマール行列$H$から上記の方法によって得られる全ての符号語を求めよ。これらは線形符号か？ \\
+
+    定理 6.29で得られる任意の符号$C$は符号長$n$のアダマール符号と呼ばれる。
+    このような符号で符号長$32$のものは1969年火星探査機マリナーからの写真伝送に使われた。
+
+        \subparagraph{練習 6.15}
+          $8$次のアダマール行列を構成し、符号長$8$のアダマール符号を構成せよ。
+          この符号の伝送速度はどうなるか？この符号はどれだけの誤りを訂正できるか？そしてどれだけの誤りを検出するか？ \\
+
+    $n$が$2$の類乗数でない場合、$2n$もまた$2$の類乗数ではないので、そのような$n$に対して符号長$n$のアダマール符号は線形にはなりえない。
+    任意の符号長$n$のアダマール符号の伝送速度は
+    \[ R = \frac{\log_2 (2n)}{n} = \frac{1 + \log_2 n}{n} \rightarrow 0 \ \text{as} \ n \rightarrow \infty \]
+    訂正可能な誤りの数は ($n > 2$ の場合) 定理6.10 と 定理6.29 と 系6.28から
+    \[t = \lfloor \frac{d-1}{2} \rfloor = \lfloor \frac{n -2}{4} \rfloor = \frac n4 - 1 \]
+    なので、よって訂正される誤りの割合は
+    \[ \frac tn = \frac 14 - \frac 1n \rightarrow \frac 14 \ \text{as} \ n \rightarrow \infty \]
+    となる。
+
+
+\end{document}
