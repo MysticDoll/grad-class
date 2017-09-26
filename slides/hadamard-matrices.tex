@@ -21,7 +21,7 @@
     アダマールは与えられた各$n$に対し、\\ $n \times n$実行列$H$の行列式がどれだけ大きく出来るかに興味を持った。\\
     この問題に意味づけるために$H$の要素に制限が必要であるが、 \\
     全ての$i, j$に対して、$\mid h_{ij} \mid \leq 1$としても一般性を失わない。\\
-    これらの条件の下、アダマールは$\mid \det H \mid \leq n^{n/2}$が
+    これらの条件の下、アダマールは$\mid \det H \mid \leq n^{n/2}$の等号成立が
     \begin{itemize}
       \item[(a)] 各$h_{ij} = \pm 1$ かつ
       \item[(b)] $H$の相異なる行$\mathbf{r}_i$は直交する、つまり$i \neq j$なる全ての$i, j$に対し、$\mathbf{r}_i \ldotp \mathbf{r}_j = 0$
@@ -31,7 +31,7 @@
 
   \begin{frame}{定義 アダマール行列}
     (a) 及び (b) を満たす$n \times n$行列$H$は、$n$次アダマール行列と呼ばれる。\\
-    (a)は全ての$i$に対して$\mathbf{r}_i \ldotp \mathbf{r}_j = n$を意味し、$H H^T$が対角行列
+    (a)は全ての$i$に対して$\mathbf{r}_i \ldotp \mathbf{r}_i = n$を意味し、$H H^T$が対角行列
     \[ H H^T = \begin{pmatrix}
         n & 0 & \cdots & 0 \\
         0 & n & \cdots & 0 \\
@@ -76,7 +76,7 @@
 
   \begin{frame}{系 6.25}
     \begin{block}{系 6.25}
-      各$m \geq 0$に対して$2^m$次のアダマール行列が存在する。
+      各整数$m \geq 0$に対して$2^m$次のアダマール行列が存在する。
     \end{block}
     \vspace{1cm}
       
@@ -104,7 +104,7 @@
     \end{block}
 
       \begin{block}{証明}
-        直交する異なる行$\mathbf{r}_i$と$\mathbf{r}_j$は$h{i1}h_{ji} + \cdots + h_{in}h_{jn} = 0$を与える。
+        $i \neq j$に対して行$\mathbf{r}_i$と$\mathbf{r}_j$の直交性は$h_{i1}h_{j1} + \cdots + h_{in}h_{jn} = 0$を与える。 \\
         それぞれの$h_{ik}h_{jk} = \pm1$で、よって$n$は偶数でなければならない。
       \end{block}
   \end{frame}
