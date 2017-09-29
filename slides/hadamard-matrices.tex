@@ -116,9 +116,9 @@
 
       \begin{block}{証明}
         $H$の任意の異なる行$\mathbf{r}_i, \mathbf{r}_j$に対して$k$番目の要素に$-1$をかけたものをそれぞれ$\mathbf{r}_i^\prime, \mathbf{r}_j^\prime$としたとき、
-        \[ \mathbf{r}_i \bullet \mathbf{r}_j^T = r_{i1}r_{j1} + \cdots + r_{ik}r_{jk} + \cdots r_{in}r_{jn}
-        = r_{i1}r_{j1} + \cdots + (-r_{ik})(-r_{jk}) + \cdots + r_{in}r_{jn} = \mathbf{r}_i^\prime \bullet \mathbf{r}_j^\prime \]
-        となるので、任意の行に$-1$をかけた行列はアダマール行列の性質を失わず、 \\そのため最初の行$\mathbf{r}_1$は全ての要素が$1$と仮定して良い。\\
+        \[ \mathbf{r}_i \ldotp \mathbf{r}_j = r_{i1}r_{j1} + \cdots + r_{ik}r_{jk} + \cdots r_{in}r_{jn}
+        = r_{i1}r_{j1} + \cdots + (-r_{ik})(-r_{jk}) + \cdots + r_{in}r_{jn} = \mathbf{r}_i^\prime \ldotp \mathbf{r}_j^\prime \]
+        となるので、任意の列に$-1$をかけた行列はアダマール行列の性質を失わず、 \\そのため最初の行$\mathbf{r}_1$は全ての要素が$1$と仮定して良い。\\
         各行$\mathbf{r}_i \ (i \neq 1)$は$\mathbf{r}_1$と直交し、$n/2$個の要素は$1$で、残りの$n/2$個は$-1$である。 \\
         列を交換すると (これも同様の議論からアダマール行列の性質を失わない) 、 \\ 以下のように仮定できる
         \[ \mathbf{r}_2 = \begin{pmatrix} 1 & 1 & \ldots & 1 & -1 & -1 & \ldots & -1 \end{pmatrix} \]
@@ -127,7 +127,7 @@
   \begin{frame}{証明: 補題 6.28}
       \begin{block}{証明}
         次に$\mathbf{r}_1, \mathbf{r}_2$のそれぞれと異なる$3$つ目の行$\mathbf{r}_3$について考える \\
-        $\mathbf{r}_3$の列の最初と最後の$n/2$個を要素がそれぞれ$1$を$u$個と$v$個含むとする (そして残りの要素が$-1$となる)。 このとき
+        $\mathbf{r}_3$の最初と最後の$n/2$個の要素がそれぞれ$1$を$u$個と$v$個含むとする (そして残りの要素が$-1$となる)。 このとき
         \[0 = \mathbf{r}_1 \ldotp \mathbf{r}_3 = u - \big( \frac n2 - u \big) + v - \big( \frac n2 - v \big) = 2u + 2v - n\]
         さらに、
         \[ 0 = \mathbf{r}_2 \ldotp \mathbf{r}_3 = u - \big( \frac n2 - u \big) - v + \big( \frac n2 - v \big) = 2u - 2v \]
@@ -194,7 +194,7 @@
   \end{frame}
 
   \begin{frame}{アダマール符号の性質}
-    $n$が$2$の類乗数でない場合、$2n$もまた$2$の類乗数ではない。 \\
+    $n$が$2$の累乗数でない場合、$2n$もまた$2$の累乗数ではない。 \\
     よってそのような$n$に対して符号長$n$のアダマール符号は線形にはなりえない。\\
     任意の符号長$n$のアダマール符号の伝送速度は
     \[ R = \frac{\log_2 (2n)}{n} = \frac{1 + \log_2 n}{n} \rightarrow 0 \ \text{as} \ n \rightarrow \infty \]
