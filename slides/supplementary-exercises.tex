@@ -1,0 +1,58 @@
+\documentclass[dvipdfmx,10pt,jsarticle]{beamer}
+\usetheme{CambridgeUS}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{newtxtext}
+\title{Supplementary Exercises}
+\author{Mitsuru Takigahira}
+\date[2017/10/01]{}
+
+\begin{document}
+  \frame{\maketitle}
+ 
+  \begin{frame}{練習 6.16}
+    $\mathbf{Z}_2$上で既約な3次多項式を示し、それを用いて位数8の体$\mathbf{F}_8$を構成せよ。
+    そのような多項式がちょうど2つあることを示し、対応する体は同型であることを示せ。
+  \end{frame}
+
+  \begin{frame}{練習 6.16: 回答 (1)}
+    3次の多項式$f(x)$が既約であることは、 \\一次因子を持たない (すなわち$f(x) = 0$が解をもたない)ことと同値である。 \\
+    よって、$\mathbf{F}_2$上で既約な3次多項式は
+    \begin{itemize}
+      \item $f_\alpha (x) = x^3 + x^2 + 1$
+      \item $f_\beta (x) = x^3 + x + 1$
+    \end{itemize}
+    の2つのみ存在し、解をそれぞれ$\alpha, \beta$とおくと、2つの位数8の有限体
+    \begin{itemize}
+      \item $\mathbf{F}_\alpha = \lbrace a \alpha^2 + b \alpha + c \mid a, b, c \in \mathbf{F}_2 \rbrace$
+      \item $\mathbf{F}_\beta = \lbrace a \beta^2 + b \beta + c \mid a, b, c \in \mathbf{F}_2 \rbrace$
+    \end{itemize}
+    を構成できる。\\
+    このとき$\alpha^3 = \alpha^2 + 1$及び、$\beta^3 = \beta + 1$なので、\\
+    ${(\alpha + 1)}^3 = \alpha^3 + \alpha^2 + \alpha + 1 = \alpha = (\alpha + 1) + 1$ となる。これを利用して、
+    \[ g: \mathbf{F}_\beta \rightarrow \mathbf{F}_\alpha \]
+    \[g(a \alpha^2 + b \alpha + 1) = a \beta^2 + b \beta + (a + b + c) \]
+    なる写像$g$を定義できる。 \\
+  \end{frame}
+
+  \begin{frame}{練習 6.16: 回答 (2)}
+    この$g$は任意の
+    \begin{itemize}
+      \item $\gamma \in \mathbf{F}_2$
+      \item $x = a_x \beta^2 + b_x \beta + c_x \in \mathbf{F}_\beta$
+      \item $y = a_y \beta^2 + b_y \beta + c_y \in \mathbf{F}_\beta$
+    \end{itemize}
+    に対して
+    \begin{itemize}
+      \item $ g(x + y) = (a_x + a_y) \alpha^2 + (b_x + b_y) \alpha + (a_x + a_y + b_x + b_y + c_x + c_y) = g(x) + g(y) $
+      \item $ g(a x) = \gamma a_x \alpha^2 + \gamma b_x \alpha + \gamma c_x = \gamma(a_x \alpha^2 + b_x \alpha + c_x) = \gamma g(x) $
+    \end{itemize}
+    が成立するため線形写像である。\\
+    また、任意の$x,y \in \mathbf{F}_\beta$に対して、$g(x) = g(y) \Rightarrow g(x) - g(y) = g(x - y) = 0 \therefore x = y$が成立し単射であり、\\
+    更に$\mid \mathbf{F}_\beta \mid = \mid \mathbf{F}_\alpha \mid = 8$から全単射であることが言えるので$g$は同型写像である。 \\
+    以上より、2つの位数8の有限体$\mathbf{F}_\alpha, \mathbf{F}_\beta$が同型であることが示された。
+
+  \end{frame}
+
+\end{document}
