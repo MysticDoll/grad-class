@@ -6,7 +6,7 @@
 \usepackage{newtxtext}
 \title{Proof of Linearity of Hadamard Code given by Sylvester Matrices}
 \author{Mitsuru Takigahira}
-\date[2017/10/01]{}
+\date[2017/10/20]{}
 
 \begin{document}
   \frame{\maketitle}
@@ -16,40 +16,40 @@
 
     $n = 2^m$のとき
     \begin{itemize}
-      \item Sylvester Matrixを$S^m$
-      \item $S^m$から生成されるHadamard Codeを$C_m$
-      \item $C_m$の各成分を$\mathbf{u}_1^m, \bar{\mathbf{u}}^m_1, \ldots , \mathbf{u}_{2^m}^m, \bar{\mathbf{u}}^m_{2^m}$
+      \item Sylvester Matrixを$S_m$
+      \item $S_m$から生成されるHadamard Codeを$C_m$
+      \item $C_m = \lbrace \mathbf{u}_1^m, \bar{\mathbf{u}}^m_1, \ldots , \mathbf{u}_{2^m}^m, \bar{\mathbf{u}}^m_{2^m} \rbrace$
     \end{itemize}
     と表記することにする
   \end{frame}
 
   \begin{frame}{証明 (1/3)}
     \begin{block}{$m=0$のとき}
-      $S^m = \begin{pmatrix}
+      $S_m = \begin{pmatrix}
         1
       \end{pmatrix} \text{or} \begin{pmatrix}
         -
       \end{pmatrix}$
-      より、$C_0 = \lbrace \begin{pmatrix} 1 \end{pmatrix} \begin{pmatrix} 0 \end{pmatrix} \rbrace$ \\
+      より、$C_0 = \lbrace \begin{pmatrix} 1 \end{pmatrix}, \begin{pmatrix} 0 \end{pmatrix} \rbrace$ \\
       よって、$C_0$は$\begin{pmatrix} 1 \end{pmatrix}$を基底として線形になり、$C_0$は線形符号。
     \end{block}
     \begin{block}{帰納法の仮定}
-      $m = k \geq 0$のとき$C_m$が線形になると仮定する。 \\
-      このとき$C_m$は$2^{k+1}$個の符号$\lbrace \mathbf{u}^k_1, \bar{\mathbf{u}}^k_1, \ldots , \mathbf{u}^k_{2^m}, \bar{\mathbf{u}}^k_{2^m} \rbrace$を持ち、\\
-      これらは$k + 1$個の基底$\lbrace \mathbf{e}^k_1, \ldots, \mathbf{e}^k_{k+1}\rbrace$のもと線形である。
+      $m = k \geq 0$のとき$C_k$が線形になると仮定する。 \\
+      このとき$C_k$は$2^{k+1}$個の符号$\lbrace \mathbf{u}^k_1, \bar{\mathbf{u}}^k_1, \ldots , \mathbf{u}^k_{2^k}, \bar{\mathbf{u}}^k_{2^k} \rbrace$を持ち、\\
+      これらは$k + 1$個の基底$\mathbf{e}^k_1, \ldots, \mathbf{e}^k_{k+1}$をもち、線形である。
     \end{block}
   \end{frame}
 
   \begin{frame}{証明 (2/3)}
-    \begin{block}{$S^{k+1}$から作られる符号の線形性}
+    \begin{block}{$S_{k+1}$から作られる符号の線形性}
       補題6.24より$S^{k+1} = \begin{pmatrix}
-        S^k & S^k \\ 
-        S^k & - S^k
+        S_k & S_k \\ 
+        S_k & - S_k
       \end{pmatrix}$
       なので、$C_{k+1}$に含まれる符号は\\
       $1 \leq i \leq 2^k$に対して、 $(\mathbf{u}^k_i , \mathbf{u}^k_i), (\bar{\mathbf{u}}^k_i, \bar{\mathbf{u}}^k_i), (\mathbf{u}^k_i, \bar{\mathbf{u}}^k_i), (\bar{\mathbf{u}}^k_i, \mathbf{u}^k_i)$の形になる。\\
       帰納法の仮定から、 \\
-      $0 \leq i \leq 2^k$のとき$\mathbf{u}^k_i, \bar{\mathbf{u}}^k_i$は$\mathbf{e}^k_1, \ldots, \mathbf{e}^k_{k+1}$の線型結合で表せるので、\\
+      $1 \leq i \leq 2^k$のとき$\mathbf{u}^k_i, \bar{\mathbf{u}}^k_i$はそれぞれ$\mathbf{e}^k_1, \ldots, \mathbf{e}^k_{k+1}$の線型結合で表せるので、\\
       $1 \leq i \leq k + 1$のもと $\mathbf{e}^{k+1}_i = ( \mathbf{e}^k_i, \mathbf{e}^k_i )$とおけば、\\
       $(\mathbf{u}^k_i , \mathbf{u}^k_i), (\bar{\mathbf{u}}^k_i, \bar{\mathbf{u}}^k_i)$の形の符号は$\mathbf{e}^{k+1}_1, \ldots, \mathbf{e}^{k+1}_{k+1}$の線型結合で表せる。\\
     \end{block}
