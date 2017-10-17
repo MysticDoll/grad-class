@@ -18,7 +18,7 @@
     \begin{itemize}
       \item Sylvester Matrixを$S_m$
       \item $S_m$から生成されるHadamard Codeを$C_m$
-      \item $C_m = \lbrace \mathbf{u}_1^m, \bar{\mathbf{u}}^m_1, \ldots , \mathbf{u}_{2^m}^m, \bar{\mathbf{u}}^m_{2^m} \rbrace$
+      \item $C_m = \lbrace \mathbf{u}_1^{(m)}, \bar{\mathbf{u}}^{(m)}_1, \ldots , \mathbf{u}_{2^m}^{(m)}, \bar{\mathbf{u}}^{(m)}_{2^m} \rbrace$
     \end{itemize}
     と表記することにする
   \end{frame}
@@ -35,34 +35,34 @@
     \end{block}
     \begin{block}{帰納法の仮定}
       $m = k \geq 0$のとき$C_k$が線形になると仮定する。 \\
-      このとき$C_k$は$2^{k+1}$個の符号$\lbrace \mathbf{u}^k_1, \bar{\mathbf{u}}^k_1, \ldots , \mathbf{u}^k_{2^k}, \bar{\mathbf{u}}^k_{2^k} \rbrace$を持ち、\\
-      これらは$k + 1$個の基底$\mathbf{e}^k_1, \ldots, \mathbf{e}^k_{k+1}$をもち、線形である。
+      このとき$C_k$は$2^{k+1}$個の符号$\lbrace \mathbf{u}^{(k)}_1, \bar{\mathbf{u}}^{(k)}_1, \ldots , \mathbf{u}^{(k)}_{2^k}, \bar{\mathbf{u}}^{(k)}_{2^k} \rbrace$を持ち、\\
+      これらは$k + 1$個の基底$\mathbf{e}^{(k)}_1, \ldots, \mathbf{e}^{(k)}_{k+1}$をもち、線形である。
     \end{block}
   \end{frame}
 
   \begin{frame}{証明 (2/3)}
     \begin{block}{$S_{k+1}$から作られる符号の線形性}
-      補題6.24より$S^{k+1} = \begin{pmatrix}
+      補題6.24より$S_{k+1} = \begin{pmatrix}
         S_k & S_k \\ 
         S_k & - S_k
       \end{pmatrix}$
       なので、$C_{k+1}$に含まれる符号は\\
-      $1 \leq i \leq 2^k$に対して、 $(\mathbf{u}^k_i , \mathbf{u}^k_i), (\bar{\mathbf{u}}^k_i, \bar{\mathbf{u}}^k_i), (\mathbf{u}^k_i, \bar{\mathbf{u}}^k_i), (\bar{\mathbf{u}}^k_i, \mathbf{u}^k_i)$の形になる。\\
+      $1 \leq i \leq 2^k$に対して、 $(\mathbf{u}^{(k)}_i , \mathbf{u}^{(k)}_i), (\bar{\mathbf{u}}^{(k)}_i, \bar{\mathbf{u}}^{(k)}_i), (\mathbf{u}^{(k)}_i, \bar{\mathbf{u}}^{(k)}_i), (\bar{\mathbf{u}}^{(k)}_i, \mathbf{u}^{(k)}_i)$の形になる。\\
       帰納法の仮定から、 \\
-      $1 \leq i \leq 2^k$のとき$\mathbf{u}^k_i, \bar{\mathbf{u}}^k_i$はそれぞれ$\mathbf{e}^k_1, \ldots, \mathbf{e}^k_{k+1}$の線型結合で表せるので、\\
-      $1 \leq i \leq k + 1$のもと $\mathbf{e}^{k+1}_i = ( \mathbf{e}^k_i, \mathbf{e}^k_i )$とおけば、\\
-      $(\mathbf{u}^k_i , \mathbf{u}^k_i), (\bar{\mathbf{u}}^k_i, \bar{\mathbf{u}}^k_i)$の形の符号は$\mathbf{e}^{k+1}_1, \ldots, \mathbf{e}^{k+1}_{k+1}$の線型結合で表せる。\\
+      $1 \leq i \leq 2^k$のとき$\mathbf{u}^{(k)}_i, \bar{\mathbf{u}}^{(k)}_i$はそれぞれ$\mathbf{e}^{(k)}_1, \ldots, \mathbf{e}^{(k)}_{k+1}$の線型結合で表せるので、\\
+      $1 \leq i \leq k + 1$のもと $\mathbf{e}^{(k+1)}_i = ( \mathbf{e}^{(k)}_i, \mathbf{e}^{(k)}_i )$とおけば、\\
+      $(\mathbf{u}^{(k)}_i , \mathbf{u}^{(k)}_i), (\bar{\mathbf{u}}^{(k)}_i, \bar{\mathbf{u}}^{(k)}_i)$の形の符号は$\mathbf{e}^{(k+1)}_1, \ldots, \mathbf{e}^{(k+1)}_{k+1}$の線型結合で表せる。\\
     \end{block}
   \end{frame}
 
   \begin{frame}{証明 (3/3)}
-    \begin{block}{$S^{k+1}$から作られる符号の線形性}
+    \begin{block}{$S_{k+1}$から作られる符号の線形性}
       更に、$C_k$は線形符号なので、$\mathbf{0} = ( 0 \ldots 0 )$を含むため、\\
       $C_{k+1}$は$(\mathbf{0}, \bar{\mathbf{0}}) = (0\ldots01\ldots 1)$を含み、
-      これは$(\mathbf{u}^k_i , \mathbf{u}^k_i), (\bar{\mathbf{u}}^k_i, \bar{\mathbf{u}}^k_i)$の形ではない。\\
-      $\mathbf{e}^{k+1}_{k+2} = (0\ldots 01 \ldots 1)$とおくと、$1 \leq i \leq 2^k$に対し \\
-      $\mathbf{e}^{k+1}_{k+2} + (\bar{\mathbf{u}}^k_i, \bar{\mathbf{u}}^k_i) = (\bar{\mathbf{u}}^k_i, \mathbf{u}^k_i)$かつ$\mathbf{e}^{k+1}_{k+2} + (\mathbf{u}^k_i, \mathbf{u}^k_i) = (\mathbf{u}^k_i, \bar{\mathbf{u}}^k_i)$\\
-      よって、$C_k$が線形のとき$C_{k+1}$は$\mathbf{e}^{k+1}_1 , \ldots, \mathbf{e}^{k+1}_{k+2}$を基底として線形となる。
+      これは$(\mathbf{u}^{(k)}_i , \mathbf{u}^{(k)}_i), (\bar{\mathbf{u}}^{(k)}_i, \bar{\mathbf{u}}^{(k)}_i)$の形ではない。\\
+      $\mathbf{e}^{(k+1)}_{k+2} = (0\ldots 01 \ldots 1)$とおくと、$1 \leq i \leq 2^k$に対し \\
+      $\mathbf{e}^{k+1}_{k+2} + (\bar{\mathbf{u}}^{(k)}_i, \bar{\mathbf{u}}^{(k)}_i) = (\bar{\mathbf{u}}^{(k)}_i, \mathbf{u}^{(k)}_i)$かつ$\mathbf{e}^{(k+1)}_{k+2} + (\mathbf{u}^{(k)}_i, \mathbf{u}^{(k)}_i) = (\mathbf{u}^{(k)}_i, \bar{\mathbf{u}}^{(k)}_i)$\\
+      よって、$C_k$が線形のとき$C_{k+1}$は$\mathbf{e}^{(k+1)}_1 , \ldots, \mathbf{e}^{(k+1)}_{k+2}$を基底として線形となる。
     \end{block}
     
     以上から、数学的帰納法により、Sylvester Matrixから作られるHadamard Codeは線形であることが示された。
