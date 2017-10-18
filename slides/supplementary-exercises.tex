@@ -139,4 +139,12 @@
         3-540-76197, \ 3-540-76179-7, \ 3-541-76197-7 
     \end{center}
   \end{frame}
+  
+  \begin{frame}{練習 6.21: 解答}
+    正しいISBNとなる符号$(a_1, \ldots, a_{10})$に対して、$\sum_{i=1}^{10} i a_i \equiv 0 (\mod 11)$が成立する。このとき、$j$桁目が誤って$b_j$として伝送された場合、
+    $\sum_{i=1}^{10} i a_i + j(b_j - a_j) \not\equiv 0$となり、誤りを検出できる。 ($\because j, a_j, b_j \in \mathbf{F}_{11}$より$j(b_j - a_j) \in \mathbf{F}_{11}$となるため) \\
+    また、2つの桁$j,k$桁目が入れ替わり、$a_j \neq a_k$となる場合、$\sum_{i=1}^{10} i a_i - j a_j - k a_k + j a_k + k a_j = \sum_{i=1}^{10} ia_i + (j - k) (a_k - a_j) \not\equiv 0$となる。\\
+    ($\because$ 先ほどと同様 $j, k , a_j, a_k \in \mathbf{F}_{11}$となるため)
+    
+  \end{frame}
 \end{document}
