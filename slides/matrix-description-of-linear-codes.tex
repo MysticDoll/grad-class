@@ -1,0 +1,185 @@
+\documentclass[dvipdfmx,10pt,jsarticle]{beamer}
+\usetheme{CambridgeUS}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{newtxtext}
+\title{Matrix Description of Linear Codes}
+\author{Mitsuru Takigahira}
+\date[2017/10/20]{}
+
+\begin{document}
+  \frame{\maketitle}
+
+  \begin{frame}{導入}
+    6章ではいくつかの線形符号を考え、補題6.8で最小距離の計算が線形符号は一般の符号よりも簡単であることを見た。 \\
+    7章では線形符号について、最小距離のより簡単な計算法を含む線形代数や行列の定理を適用することによって得られる他の利点に注目し、より詳しく見ていく。 \\
+    定理的な背景として要求されるものには線形独立性や次元、行や列の演算などの話題が含まれるが、それらは通常大学1年生の線形代数の講義で扱われている。\\
+    しかしながらそのような講義ではしばしば実数上あるいは複素数上の線形空間や行列に制限しているので、全ての重要な結果や技法について有限体を含む任意の体に拡張する必要がある。
+    
+    この章を通して$\mathbf{F}$を何らかの素数$p$の累乗数$q = p^e$に対して、位数$q$の有限体$\mathbf{F}_q$とする。
+  \end{frame}
+  \begin{frame}{生成行列}
+    線形符号$C \subseteq \mathcal{V} = \mathbf{F}^n$は$C$に対する基底$\mathbf{u}_1, \ldots, \mathbf{u}_k$を与えることで決定できる。\\
+    そのため、符号語$\mathbf{u} \in C$は基底ベクトルの線形結合
+    \[ a_1 \mathbf{u}_1 + \cdots + a_k \mathbf{u}_k \ (a_i \in \mathbf{F}) \]
+    で表される。 \\
+    これは全ての$M = q^k$個のベクトルの代わりに、$k = \dim (C)$の下$k$個のベクトルだけが必要である。\\
+    基底を決定する便利な方法には$C$の生成行列$G$を与えるというものがある。この行列は$k$行$n$列で、各行は$C$の基底ベクトルの1つである。 
+
+    ($C$は$G$をただひとつだけ決定するわけではないことに注意しよう。これは部分空間は多くの基底の組を持ち、与えられた基底ベクトルはどんな順で書いても良いためである。)
+  \end{frame}
+
+  \begin{frame}{生成行列の例}
+    \begin{block}{例 7.1 反復符号の生成行列}
+      反復符号$\mathcal{R}_n$は唯一の基底$\mathbf{u}_1 = \begin{pmatrix} 1 & 1 & \cdots & 1 \end{pmatrix}$ を持つので、生成行列$G$は
+      \[G = \begin{pmatrix}
+          1 & 1 & \cdots & 1
+      \end{pmatrix} \]
+      となる
+    \end{block}
+    \begin{block}{例 7.2 パリティ検査符号の生成行列}
+      $\mathbf{F}$上のパリティ検査符号$\mathcal{P}_n$は$\mathbf{e}_1, \ldots, \mathbf{e}_n$を$\mathcal{V}$の標準基底ベクトルとして、\\
+      $\mathbf{u}_i = \mathbf{e}_i - \mathbf{e}_n$なる基底$\mathbf{u}_1 ,\ldots,\mathbf{u}_{n-1}$を持つ。よって生成行列$G$は
+      \[G = \begin{pmatrix}
+          1 &   &   &  & -1 \\
+            & 1 &   &  & -1 \\
+            &   & \ddots &  & -1 \\
+            &   &   & 1 & -1
+      \end{pmatrix} \]
+      となる
+    \end{block}
+  \end{frame}
+  \begin{frame}{例 7.3 生成行列の例}
+    \begin{block}{2元ハミング符号}
+      2元ハミング符号$\mathcal{H}_7$の基底$\mathbf{u}_1 = 1110000, \mathbf{u}_2 = 1001100, \mathbf{u}_3 = 0101010, \mathbf{u}_4 = 1101001$は例6.5で与えられた。\\
+      よってこの符号の生成行列$G$は
+      \[ G = \begin{pmatrix}
+          1 & 1 & 1 & 0 & 0 & 0 & 0 \\
+          1 & 0 & 0 & 1 & 1 & 0 & 0 \\
+          0 & 1 & 0 & 1 & 0 & 1 & 0 \\
+          1 & 1 & 0 & 1 & 0 & 0 & 1
+      \end{pmatrix} \] となる
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{生成行列による符号の生成}
+    線形符号$C$が次元$k$を持つ場合、$k$次元の線形空間$\mathcal{A} = \mathbf{F}^k$を情報源として、この情報源が$G$から得られる線形同型写像$\mathcal{A} \rightarrow C \subseteq \mathcal{V} = \mathbf{F}^n$によって符号化されるとみなすことが出来る。 \\
+    具体的に、各語$\mathbf{a} = a_1 \dots a_k \in \mathcal{A}$は符号語$\mathbf{u} = \mathbf{a} G$ととして符号化され、$\mathcal{A} \rightarrow C$の間の同型写像$\mathbf{a} \mapsto \mathbf{u}$を与える。\\
+    そのようにして、符号化は定行列との掛け算で簡単に計算できる。
+  \end{frame}
+
+  \begin{frame}{符号生成の例}
+    \begin{block}{例 7.4 反復符号の生成}
+      反復符号$\mathcal{R}_n$は次元$k = 1$を持つので、$\mathcal{A} = \mathbf{F}^1 = \mathbf{F}$である。各$\mathbf{a} = a \in \mathcal{A}$は$\mathbf{u} = \mathbf{a} G = a \ldots a \in \mathcal{R}_n$として符号化される
+    \end{block}
+    \begin{block}{例 7.5 パリティ検査符号の生成}
+      $C = \mathcal{P}_n$の場合$k = n - 1$である。各$\mathbf{a} = a_1 \ldots a_{n-1} \in \mathcal{A}$は$\sum_i a_i = 0$つまり$a_n = - ( a_1 + \cdots + a_{n-1}$) として$\mathbf{u} = \mathbf{a} G = a_1 \ldots a_{n-1} a_n$に符号化される。
+    \end{block}
+    \begin{block}{例 7.6 2元ハミング符号の生成}
+      $C = \mathcal{H}_7$の場合$n = 7, k = 4$で$\mathcal{A} = \mathbf{F}_2^4$である。各$a_1 \ldots a_4 \in \mathcal{A}$は$\mathbf{u} = \mathbf{a} G \in \mathcal{H}_7 \subset \mathbf{F}_2^7$として符号化される。例えば、例6.5では$\mathbf{a} = 0110$を
+      {\scriptsize
+      \[\mathbf{u} = \mathbf{a} G = \begin{pmatrix} 0 & 1 & 1 & 0 \end{pmatrix}\begin{pmatrix}
+          1 & 1 & 1 & 0 & 0 & 0 & 0 \\
+          1 & 0 & 0 & 1 & 1 & 0 & 0 \\
+          0 & 1 & 0 & 1 & 0 & 1 & 0 \\
+          1 & 1 & 0 & 1 & 0 & 0 & 1
+      \end{pmatrix}  = \begin{pmatrix} 1 & 1 & 0 & 0 & 1 & 1 & 0 \end{pmatrix}\] 
+      } と符号化する。
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{符号の生成と連立方程式}
+    線形符号$C$に対して生成行列$G$が与えても、ある$\mathbf{v} \in \mathcal{V}$が$C$に含まれるか、\\
+    そうでない場合どの符号$\mathbf{u} \in C$が最も近いかを決定するのは大変である。
+    
+    これを簡単にするために、$C$の他の行列表現を探すことにしよう。\\
+    これを効率的に行う方法は、$C$の要素を決定する$n-k$個の連立方程式を与えることである。\\
+    つまり、あるベクトル$\mathbf{v} \in \mathcal{V}$はその要素$v_i$がそれらの連立方程式を満たすとき、かつそのときのみ$C$に含まれるということである。
+  \end{frame}
+
+  \begin{frame}{符号を決定する連立方程式の例}
+    \begin{block}{例 7.7 反復符号}
+      反復符号$\mathcal{R}_n$は$v_1 = \cdots = v_n$を満たすベクトル$\mathbf{v} = v_1 \ldots v_n \in \mathcal{V}$から構成され、これは$n-k = n-1$個の連立方程式$v_i - v_n = 0 \ (i = 1,\ldots,n-1)$とみなすことが出来る。
+    \end{block}
+    \begin{block}{例 7.8 パリティ検査符号の例}
+      パリティ検査符号$\mathcal{P}_n$ ($n-k=1$をもつ)は、$\mathcal{V}$の部分空間で、1つの一次方程式$v_1 + \cdots + v_n = 0$で定義される。
+    \end{block}
+    \begin{block}{例 7.9 ハミング符号の例}
+      ハミング符号$\mathcal{H}_7$は以下の連立方程式を満たすベクトル$\mathbf{v} \in \mathcal{V} = \mathbf{F}_2^7$から構成される。
+      \[ v_4 + v_5 + v_6 + v_7 = 0 \]
+      \[ v_2 + v_3 + v_6 + v_7 = 0 \]
+      \[ v_1 + v_3 + v_5 + v_7 = 0 \]
+    \end{block}
+  \end{frame}
+  \begin{frame}{パリティ検査行列}
+    一般的に、$c$個の独立した一次方程式は次元$n-c$の線形部分空間$\mathcal{V}$を定義する。よって、$c=n-k$個の独立した一次方程式が$C$を決定するのに必要である。\\
+    これらはパリティ検査方程式と呼ばれ、それらの係数の行列$H$は\\
+    $n$列で$n-k$個の独立した行からなり、$C$のパリティ検査行列と呼ばれる。 \\
+    この連立方程式は$\mathbf{v} H^T = \mathbf{0}$の形で書け、$H^T$は$H$の転置行列である。よって、次の効果的な$C$の符号語の検査方法が使える。
+
+    \begin{block}{補題 7.10}
+      \begin{itemize}
+        \item $C \subseteq \mathcal{V}$: 線形符号
+        \item $H$: $C$のパリティ検査行列
+        \item $\mathbf{v} \in \mathcal{V}$
+      \end{itemize}
+      とおく。このとき、$\mathbf{v} \in C$は$\mathbf{v} H^T = \mathbf{0}$となるとき、かつそのときのみである。
+    \end{block}
+  \end{frame}
+  
+  \begin{frame}{パリティ検査行列の例}
+    \begin{block}{例 7.11 反復符号}
+      $i = 1, \ldots , n-1$に対して$v_i - v_n = 0$の連立方程式を使うと、以下の$n-1$行$n$列の行列を得る。
+      \[ H = \begin{pmatrix}
+          1 &   &   &   & -1 \\
+            & 1 &   &   & -1 \\
+            &   & \ddots &   & -1 \\
+            &   &   & 1 & -1
+        \end{pmatrix} \]
+      これは反復符号$\mathcal{R}_n$のパリティ検査行列である。
+    \end{block}
+    \begin{block}{例 7.12 パリティ検査符号}
+      $v_1 + \cdots + v_n = 0$から、
+      \[ H = \begin{pmatrix} 1 & 1 & \cdots & 1 \end{pmatrix} \]
+      が作れ、これはパリティ検査符号$\mathcal{P}_n$のパリティ検査行列である。
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{パリティ検査行列の例}
+    \begin{block}{例 7.13 ハミング符号}
+      $\mathcal{H}_7$には3つの1次方程式が例7.9で与えられていて、これからパリティ検査符号
+      \[H= \begin{pmatrix}
+          0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+          0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+          1 & 0 & 1 & 0 & 1 & 0 & 1 
+        \end{pmatrix} \]
+      を得る。
+    \end{block}
+  \end{frame}
+  \begin{frame}{練習 7.1}
+    \begin{block}{練習 7.1}
+      $C$を線形符号、$G$をその生成行列、$H$をそのパリティ検査行列とおく。拡大符号$\bar C$に対して生成行列$\bar G$及びパリティ検査行列$\bar H$を求めよ。
+    \end{block}
+    \begin{block}{解答}
+      $\bar G$の各行の和の逆元を追加したような行からなる行列を$\bar G$、全ての要素が1で構成される行を$H$に追加した行列を$\bar G$とすれば良い。
+    \end{block}
+  \end{frame}
+  \begin{frame}{練習 7.2}
+    \begin{block}{練習 7.2}
+      $C_1, C_2 \subseteq \mathcal{V}$を線形符号、それぞれの生成行列を$G_1, G_2$、それぞれのパリティ検査行列を$H_1, H_2$とおく。\\
+      どのようにして$C_1 + C_2$の生成行列及び、$C_1 \cap C_2$のパリティ検査行列を見つければよいか？
+    \end{block}
+    \begin{block}{解答}
+      $C_1 + C_2$の生成行列は$G_1$の行を$G_2$に追加し、線形従属な行を削除することによって得られる。\\
+      また、$C_1 \cap C_2$のパリティ検査行列は$H_1$の行を$H_2$に追加し同様に、線形従属な行を削除することによって得られる。
+    \end{block}
+  \end{frame}
+  \begin{frame}{双対符号}
+    $H$は$h: \mathcal{V} \rightarrow \mathcal{W} = \mathbf{F}^{n-k}$なる各$\mathbf{v} \in \mathcal{V}$を$h(\mathbf{v}) = \mathbf{v} H^T$で移す線形変換と見れる。\\
+    よって、補題7.10は$C$が$h$の核$\ker (h)$、つまり$\mathbf{0}$に移されるベクトルの組かを検査している。 \\
+    $h$の像$\text{im} (h)$は$H$によって張られる$\mathcal{W}$の部分空間である。 次元定理から$\dim (\mathcal{V}) = \dim (\ker (h)) + \dim(\text{im} (h))$より$\dim (\text{im} (h)) = n - k$なので、\\
+    $h$は$\mathcal{V}$から$\mathcal{W}$への写像である。
+  \end{frame}
+
+\end{document}
