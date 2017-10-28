@@ -20,9 +20,7 @@
     この章を通して$\mathbf{F}$を何らかの素数$p$の累乗数$q = p^e$に対して、位数$q$の有限体$\mathbf{F}_q$とする。
   \end{frame}
   \begin{frame}{生成行列}
-    線形符号$C \subseteq \mathcal{V} = \mathbf{F}^n$は$C$に対する基底$\mathbf{u}_1, \ldots, \mathbf{u}_k$を与えることで決定できる。\\
-    そのため、符号語$\mathbf{u} \in C$は基底ベクトルの線形結合
-    \[ a_1 \mathbf{u}_1 + \cdots + a_k \mathbf{u}_k \ (a_i \in \mathbf{F}) \]
+    線形符号$C \subseteq \mathcal{V} = \mathbf{F}^n$は$C$に対する基底$\mathbf{u}_1, \ldots, \mathbf{u}_k$を与えることで決定できる。\\ そのため、符号語$\mathbf{u} \in C$は基底ベクトルの線形結合 \[ a_1 \mathbf{u}_1 + \cdots + a_k \mathbf{u}_k \ (a_i \in \mathbf{F}) \]
     で表される。 \\
     これは全ての$M = q^k$個のベクトルの代わりに、$k = \dim (C)$の下$k$個のベクトルだけが必要である。\\
     基底を決定する便利な方法には$C$の生成行列$G$を与えるというものがある。この行列は$k$行$n$列で、各行は$C$の基底ベクトルの1つである。 
@@ -90,7 +88,7 @@
   \end{frame}
 
   \begin{frame}{符号の生成と連立方程式}
-    線形符号$C$に対して生成行列$G$が与えても、ある$\mathbf{v} \in \mathcal{V}$が$C$に含まれるか、\\
+    線形符号$C$に対して生成行列$G$が与えられても、ある$\mathbf{v} \in \mathcal{V}$が$C$に含まれるか、\\
     そうでない場合どの符号$\mathbf{u} \in C$が最も近いかを決定するのは大変である。
     
     これを簡単にするために、$C$の他の行列表現を探すことにしよう。\\
@@ -162,7 +160,7 @@
       $C$を線形符号、$G$をその生成行列、$H$をそのパリティ検査行列とおく。拡大符号$\bar C$に対して生成行列$\bar G$及びパリティ検査行列$\bar H$を求めよ。
     \end{block}
     \begin{block}{解答}
-      $\bar G$の各行の和の逆元を追加したような行からなる行列を$\bar G$、全ての要素が1で構成される行を$H$に追加した行列を$\bar G$とすれば良い。
+      $G$の各行の和の逆元を追加したような行からなる行列を$\bar G$、全ての要素が1で構成される行を$H$に追加した行列を$\bar H$とすれば良い。
     \end{block}
   \end{frame}
   \begin{frame}{練習 7.2}
