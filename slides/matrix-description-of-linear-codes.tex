@@ -160,7 +160,7 @@
       $\mathcal{C}$を線形符号、$G$をその生成行列、$H$をそのパリティ検査行列とおく。拡大符号$\bar{\mathcal{C}}$に対して生成行列$\bar G$及びパリティ検査行列$\bar H$を求めよ。
     \end{block}
     \begin{block}{解答}
-      $G$の各行の和の逆元を追加したような行からなる行列を$\bar G$、$H$に全てが$0$の要素からなる列を追加し、その後すべての要素が1で構成される行を追加した行列を$\bar H$とすれば良い。
+      $G$の各行の和の逆元からなる列を追加したような行列を$\bar G$、$H$に全ての要素が$0$からなる列を追加し、その後すべての要素が1で構成される行を追加した行列を$\bar H$とすれば良い。
     \end{block}
   \end{frame}
   \begin{frame}{練習 7.2}
@@ -174,18 +174,18 @@
     \end{block}
   \end{frame}
   \begin{frame}{双対符号}
-    $H$は$h: \mathcal{V} \rightarrow \mathcal{W} = \mathbf{F}^{n-k}$なる各$\mathbf{v} \in \mathcal{V}$を$h(\mathbf{v}) = \mathbf{v} H^T$で移す線形変換と見れる。\\
+    $H$を各$\mathbf{v} \in \mathcal{V}$を$h(\mathbf{v}) = \mathbf{v} H^T$で移す線形変換$h: \mathcal{V} \rightarrow \mathcal{W} = \mathbf{F}^{n-k}$の表現行列とみなせる。\\
     よって、補題7.10は$\mathcal{C}$が$h$の核$\ker (h)$、つまり$\mathbf{0}$に移されるベクトルの組かを検査している。 \\
-    $h$の像$\text{im} (h)$は$H$によって張られる$\mathcal{W}$の部分空間である。 次元定理から$\dim (\mathcal{V}) = \dim (\ker (h)) + \dim(\text{im} (h))$より$\dim (\text{im} (h)) = n - k$なので、\\
+    $h$の像$\text{im} (h)$は$H$の各行によって張られる$\mathcal{W}$の部分空間である。 次元定理から$\dim (\mathcal{V}) = \dim (\ker (h)) + \dim(\text{im} (h))$より$\dim (\text{im} (h)) = n - k$なので、\\
     $h$は$\mathcal{V}$から$\mathcal{W}$への写像である。 \\
     $H$ ($\mathcal{C}$を表現する連立方程式)の$n-k$個の行は線形独立で、よってこれらは次元$k$の線形部分空間$\mathcal{D} \subseteq \mathcal{V}$の基底を構成する。\\
     これは線形符号で生成行列は$H$となり、これを$\mathcal{C}$の双対符号と呼ぶ。
   \end{frame}
   \begin{frame}{双対符号}
-    $\mathcal{C}$と$\mathcal{D}$は直交性という点で関連している。ユークリッド空間$\mathbf{R}^n$でするように、以下によって内積を定義出来る。
+    $\mathcal{C}$と$\mathcal{D}$は直交性という点で関連している。ユークリッド空間$\mathbf{R}^n$でするように、以下によってスカラー積を定義出来る。
     \[ \mathbf{u} \ldotp \mathbf{v} = u_1 v_1 + \cdots + u_n v_n \eqno{(7.1)} \]
     ここで$\mathbf{u}, \mathbf{v}$は$\mathbf{V}$上の任意のベクトルである。これは両方の変数に関して線形である。つまり
-    \[(a \mathbf{u}_1 + b \mathbf{u}_2) \ldotp \mathbf{v} = a(\mathbf{u}_1\ldotp \mathbf{v}) + b \mathbf{u}_2\ldotp \mathbf{v} \ \text{かつ} \ 
+    \[(a \mathbf{u}_1 + b \mathbf{u}_2) \ldotp \mathbf{v} = a\mathbf{u}_1\ldotp \mathbf{v} + b \mathbf{u}_2\ldotp \mathbf{v} \ \text{かつ} \ 
      \mathbf{u}\ldotp (a\mathbf{v}_1 + b\mathbf{v}_2) = a\mathbf{u}\ldotp\mathbf{v}_1 + b\mathbf{u}\ldotp\mathbf{v}_2 \]
      がすべての$a,b \in \mathbf{F}$に対して成立する。$\mathbf{u}\ldotp\mathbf{v} = 0$となることを$\mathbf{u}$と$\mathbf{v}$が直交すると定義できる。\\
      $\mathbf{R}^n$と違い、非零ベクトルがそれ自信と直交することが可能である。例えば$\mathbf{u} = \mathbf{e}_1 + \mathbf{e}_2$のとき、$\mathbf{u}\ldotp\mathbf{u} = 1^2 + 1^2 = 2$より、$q=2$のとき$\mathbf{u}\ldotp\mathbf{u} = 0$である。
@@ -193,8 +193,8 @@
   \begin{frame}{双対符号}
     $\mathcal{C}$を定義する方程式$\mathbf{v}H^T = \mathbf{0}$は、
     \begin{itemize}
-      \item $\mathcal{C}$がすべての$H$の行と直交するベクトルから構成されること、
-      \item $\mathcal{D}$のすべてのベクトルと直交する
+      \item $\mathcal{C}$がすべての$H$の行と直交するベクトルから構成される
+      \item $\mathcal{C}$のベクトルが$\mathcal{D}$のすべてのベクトルと直交する
     \end{itemize}
     (これらは同値である)ということと理解できる。\\
     よって、$\mathcal{C}$は$\mathcal{D}$の直交符号$\mathcal{D}^\perp = \lbrace \mathbf{v} \in \mathcal{V} \mid \mathbf{v}\ldotp\mathbf{w} = 0 \ \text{for all} \ \mathbf{w} \in \mathcal{D} \rbrace$で、\\
@@ -210,7 +210,7 @@
   \begin{frame}{双対符号の例}
     \begin{block}{例 7.15}
       反復符号$\mathcal{R}_n$は$\mathbf{1}=1\ldots1$で張られていて、よって
-      \[ \mathcal{R}_n^\perp = \lbrace \mathbf{w} \in \mathcal{V} \mid \mathbf{1} \ldotp \mathbf{v} = 0 \rbrace = \lbrace \mathbf{w} \in \mathcal{V} \mid w_1 + \cdots + w_n = 0 \rbrace = \mathcal{P}_n \]
+      \[ \mathcal{R}_n^\perp = \lbrace \mathbf{w} \in \mathcal{V} \mid \mathbf{1} \ldotp \mathbf{w} = 0 \rbrace = \lbrace \mathbf{w} \in \mathcal{V} \mid w_1 + \cdots + w_n = 0 \rbrace = \mathcal{P}_n \]
       で、同様に
     \[\mathcal{P}_n^\perp = \lbrace \mathbf{w} \in \mathcal{V} \mid (\mathbf{e}_i - \mathbf{e}_n)\ldotp\mathbf{w} = 0 \ \text{for}\ i = 1,\ldots,n-1 \rbrace \]
       \[= \lbrace \mathbf{w} \in \mathcal{V} \mid w_i = w_n \ \text{for} \ i = 1,\ldots , n-1 \rbrace \]
@@ -234,7 +234,7 @@
     \end{block}
   \end{frame}
   \begin{frame}{双対符号の例}
-    \begin{block}{例 7.15}
+    \begin{block}{例 7.16}
       $\mathcal{H}_7^\perp$は$\mathbf{F}_2$上の線形$\lbrack7,3\rbrack$符号である。生成行列は$\mathcal{H}_7$のパリティ検査行列
       \[\begin{pmatrix}
           0 & 0 & 0 & 1 & 1 & 1 & 1 \\
