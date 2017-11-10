@@ -176,9 +176,9 @@
   \begin{frame}{双対符号}
     $H$は各$\mathbf{v} \in \mathcal{V}$を$h(\mathbf{v}) = \mathbf{v} H^T$で移す線形変換$h: \mathcal{V} \rightarrow \mathcal{W} = \mathbf{F}^{n-k}$の表現行列\\
     よって、補題7.10は$\mathcal{C}$が$h$の核$\ker (h)$であるかどうか、 \\ つまり$\mathbf{0}$に移されるベクトルの組かを検査している。 \\
-    $h$の像$\text{im} (h)$は$H$の各行によって張られる$\mathcal{W}$の部分空間である。  \\次元定理から$\dim (\mathcal{V}) = \dim (\ker (h)) + \dim(\text{im} (h))$より$\dim (\text{im} (h)) = n - k$\\
-    よって、$h$は$\mathcal{V}$から$\mathcal{W}$への写像である。 \\
-    $H$ ($\mathcal{C}$を表現する連立方程式)の$n-k$個の行は線形独立なので、 \\ これらは次元$k$の線形部分空間$\mathcal{D} \subseteq \mathcal{V}$の基底を構成する。\\
+    $h$の像$\text{im} (h)$は$H$の各列によって張られる$\mathcal{W}$の部分空間である。  \\次元定理から$\dim (\mathcal{V}) = \dim (\ker (h)) + \dim(\text{im} (h))$より$\dim (\text{im} (h)) = n - k$\\
+    よって、$h$は$\mathcal{V}$から$\mathcal{W}$への全射である。 \\
+    $H$ ($\mathcal{C}$を表現する連立方程式)の$n-k$個の行は線形独立なので、 \\ これらは次元$n - k$の線形部分空間$\mathcal{D} \subseteq \mathcal{V}$の基底を構成する。\\
     これは線形符号で生成行列は$H$となり、これを$\mathcal{C}$の双対符号と呼ぶ。
   \end{frame}
   \begin{frame}{双対符号}
@@ -188,12 +188,12 @@
     \[(a \mathbf{u}_1 + b \mathbf{u}_2) \ldotp \mathbf{v} = a\mathbf{u}_1\ldotp \mathbf{v} + b \mathbf{u}_2\ldotp \mathbf{v} \ \text{かつ} \ 
      \mathbf{u}\ldotp (a\mathbf{v}_1 + b\mathbf{v}_2) = a\mathbf{u}\ldotp\mathbf{v}_1 + b\mathbf{u}\ldotp\mathbf{v}_2 \]
      がすべての$a,b \in \mathbf{F}$に対して成立し、$\mathbf{u}\ldotp\mathbf{v} = 0\Leftrightarrow\mathbf{u}$と$\mathbf{v}$が直交する と定義できる。\\
-     $\mathbf{R}^n$と違い、非零ベクトルがそれ自信と直交することが可能である。\\ 例えば$\mathbf{u} = \mathbf{e}_1 + \mathbf{e}_2$のとき、$\mathbf{u}\ldotp\mathbf{u} = 1^2 + 1^2 = 2$より、$q=2$のとき$\mathbf{u}\ldotp\mathbf{u} = 0$
+     $\mathbf{R}^n$と違い、非零ベクトルがそれ自身と直交することが可能である。\\ 例えば$\mathbf{u} = \mathbf{e}_1 + \mathbf{e}_2$のとき、$\mathbf{u}\ldotp\mathbf{u} = 1^2 + 1^2 = 2$より、$q=2^e$のとき$\mathbf{u}\ldotp\mathbf{u} = 0$
   \end{frame}
   \begin{frame}{双対符号}
     $\mathcal{C}$を定義する方程式$\mathbf{v}H^T = \mathbf{0}$は、
     \begin{itemize}
-      \item $\mathcal{C}$がすべての$H$の行と直交するベクトルから構成される
+      \item $\mathcal{C}$が$H$のすべての行と直交するベクトルすべてから構成される
       \item $\mathcal{C}$のベクトルが$\mathcal{D}$のすべてのベクトルと直交する
     \end{itemize}
     (これらは同値である)ということと理解できる。\\
@@ -257,7 +257,7 @@
   \begin{frame}{補題 7.17 証明}
     $H$の行が$\mathcal{V}$の$n-k$個のベクトルからなり、$GH^T = 0$となることは、 \\
     これらの行が$G$の各行と直交する。すなわち$\mathcal{C}^\perp$に含まれることと同値である。\\
-    更に$H$が階数$n-k$をもつ場合、これは各行が線形独立であることと同値で、 \\ すなわち$\mathcal{C}^\perp$の基底を生成するということである。\\
+    更に$H$が階数$n-k$をもつ場合、これは各行が線形独立であることと同値で、 \\ すなわち$\mathcal{C}^\perp$の基底を形成するということである。\\
     よって、$H$が与えられた条件を満たすことは、$H$が$\mathcal{C}^\perp$の生成行列、\\ つまり$\mathcal{C}$のパリティ検査行列となることと同値である。
   \end{frame}
 
