@@ -67,7 +67,74 @@
       この場合、各$\mathbf{a} = a_1 \ldots a_k \in \mathbf{F}_k$は
       \[ \mathbf{u} = \mathbf{a} G = a_1 \ldots a_k a_{k+1} \ldots a_n \]
       に符号化され、$a_1 \ldots a_k$は情報桁、$a_{k+1} \ldots a_n = \mathbf{a} P$は$n - k$桁の検査桁となる。\\
-    情報桁は恣意的に決定できるが、一方検査桁は一意に$\mathbf{a}$及び$G$
-    によって決定され、$\mathbf{a} P$中のシンボルとして簡単に計算される
+    情報桁は恣意的に決定でき、 一方で検査桁は$\mathbf{a}$及び$G$によって一意に決まり、$\mathbf{a} P$中のシンボルとして簡単に計算される
+  \end{frame}
+
+  \begin{frame}{例}
+    \begin{block}{例 7.18}
+      \S7.1 で扱った$\mathcal{R}_n, \mathcal{P}_n$それぞれの生成行列$G_{\mathcal{R}}, G_{\mathcal{P}}$は組織符号形式である。
+      \[ G_{\mathcal{R}} = \begin{pmatrix}
+          1 & 1 & \cdots & 1
+       \end{pmatrix}, G_{\mathcal{P}} = \begin{pmatrix}
+          1 &   &   &   & 1 \\
+            & 1 &   &   & 1 \\
+            &   & \ddots &   & \vdots \\
+            &   &   & 1 & 1 
+          
+        \end{pmatrix} \]
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{例}
+    \begin{block}{例 7.19}
+      \S7.1で扱った以下の$\mathcal{H}_7$の生成行列$G_1$は組織符号形式ではないが、
+      \[ G_1 = \begin{pmatrix}
+          1 & 1 & 1 & 0 & 0 & 0 & 0 \\
+          1 & 0 & 0 & 1 & 1 & 0 & 0 \\
+          0 & 1 & 0 & 1 & 0 & 1 & 0 \\
+          1 & 1 & 0 & 1 & 0 & 0 & 1 
+    \end{pmatrix} \]
+      列の入れ替えによって同値な符号の生成行列$G_2$が得られ、これは組織符号形式。例えば1列目を7列目に移動するなどの巡回置換{\fontsize{8pt}{0pt}$\pi = \begin{pmatrix} 1 & 7 & 4 & 5 & 2 & 6 & 3 \end{pmatrix}$}は
+      \[ G_2 = \begin{pmatrix}
+          1 & 0 & 0 & 0 & 0 & 1 & 1 \\
+          0 & 1 & 0 & 0 & 1 & 0 & 1 \\
+          0 & 0 & 1 & 0 & 1 & 1 & 0 \\
+          0 & 0 & 0 & 1 & 1 & 1 & 1
+    \end{pmatrix} \]
+      を得る
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{練習問題}
+    \begin{block}{練習 7.3}
+      例 7.19の行列$G_1, G_2$はそれぞれ同値な符号$\mathcal{C}_1, \mathcal{C}_2$を生成する。\\
+      これらの符号は同一か、それとも異なるか？
+    \end{block}
+
+    \begin{block}{解答}
+      同一な符号である。\\
+      $G_1$に対して行基本変形のみを行うことで$G_2$を作ることができる為である。$G_1$の各行を$\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_3, \mathbf{r}_4$とおくと、
+      \[ G_2 = \begin{pmatrix}
+        \mathbf{r}_3 + \mathbf{r}_4 \\
+        \mathbf{r}_2 + \mathbf{r}_4 \\
+        \mathbf{r}_1 + \mathbf{r}_2 + \mathbf{r}_3 \\
+        \mathbf{r}_2 + \mathbf{r}_3 + \mathbf{r}_4 \\
+      \end{pmatrix} \] 
+     とかけることからも明らかである。
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{組織符号形式のパリティ検査行列}
+    線形符号$\mathcal{C}$に対する生成行列が
+    \[ G = \begin{pmatrix} I_k \mid P \end{pmatrix} \]
+    なる組織符号形式になる場合、$\mathcal{C}$に対するパリティ検査行列は
+    \[ H = \begin{pmatrix} -P^T \mid I_{n-k} \end{pmatrix} \ \eqno{(7.3)} \]
+    となる。これはパリティ検査行列に対する組織符号形式である。 \\
+    補題 7.17からもこれを確認できる。行列$H$は$n-k$行$n$列で、単位行列$I_{n-k}$が各行の線形独立性を保証してくれる。よってこの行列は階数$n-k$を持つ。 \\
+    最終的にブロック行列を掛け算することで以下を得る。
+    \[ GH^T = I_k (-P) + PI_{n-k} = -P + P = 0 \]
+    $q$が2の累乗の場合$a + a = 2a = 0 \ \text{for all } a \in \mathbf{F}$なので、 \\
+    $-a = a$となりマイナスの符号を省略でき、$H$をもっと簡単に次のように書ける
+    \[ H = \begin{pmatrix} P^T \mid I_{n-k} \end{pmatrix} \]
   \end{frame}
 \end{document}
