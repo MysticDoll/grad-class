@@ -137,4 +137,94 @@
     $-a = a$となりマイナスの符号を省略でき、$H$をもっと簡単に次のように書ける
     \[ H = \begin{pmatrix} P^T \mid I_{n-k} \end{pmatrix} \]
   \end{frame}
+
+  \begin{frame}{例}
+    \begin{block}{例 7.20}
+      例 7.1でから$\mathcal{R}_n$の生成行列$G$が組織符号形式であることがわかり、
+      \[ P = \begin{pmatrix}
+          1 & 1 & \cdots & 1
+      \end{pmatrix} \]
+      更に (これは$n - 1$個の要素からなる)がわかる。よって、$\mathcal{R}_n$の組織符号形式のパリティ検査行列は
+      \[ \begin{pmatrix}
+          -1 & 1  \\
+          -1 &   & 1 \\
+          \vdots &   &   & \ddots \\
+          -1 &  &  &   & 1
+      \end{pmatrix}  \]
+      となる。これは例 7.11のパリティ検査行列とは異なるが、 \\
+      同じ$\mathcal{R}_n$に対するパリティ検査方程式の組、つまり
+      \[-v_1 + v_i = 0 \ \text{for} \ 2, \ldots, n\]
+      を与える。
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{例}
+    \begin{block}{例 7.21}
+      例 7.2で得た$\mathcal{P}_n$の生成行列は組織符号形式で、
+      \[ P = \begin{pmatrix}
+          -1 & -1 & \cdots & -1
+      \end{pmatrix}^T \]
+      (これは$n - 1$個の要素からなる)を持つ。よって$\mathcal{P}_n$は組織符号形式のパリティ検査行列
+      \[ H = \begin{pmatrix}
+          1 & 1 & \cdots & 1
+      \end{pmatrix} \]
+      (これは$n$個の要素からなる)を持つ。
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{例}
+    \begin{block}{例 7.22}
+      例 7.19で$\mathcal{H}_7$の生成行列の組織符号形式が与えられ、これは
+      \[ P = \begin{pmatrix}
+          0 & 1 & 1 \\
+          1 & 0 & 1 \\
+          1 & 1 & 0 \\
+          1 & 1 & 1
+      \end{pmatrix} \]
+      を持つ。$q=2$より-の符号を無視し、$\mathcal{H}_7$は組織符号形式のパリティ検査行列
+      \[ H = \begin{pmatrix}
+          0 & 1 & 1 & 1 & 1 & 0 & 0 \\
+          1 & 0 & 1 & 1 & 0 & 1 & 0 \\
+          1 & 1 & 0 & 1 & 0 & 0 & 1 
+      \end{pmatrix} \]
+      を持つ。\\
+      (厳密にはこれらは$\mathcal{H}_7$と同値な符号の生成行列及びパリティ検査行列であり、$\mathcal{H}_7$のそれぞれの列の入れ替えによって得られるが、 \\
+      既に述べたように基本的に同値な符号を区別しないためこのように書く。)
+    \end{block}
+  \end{frame}
+  \begin{frame}{定理 7.23}
+    組織符号形式の生成行列を用いることで、 \\
+    線形符号に対するシングルトン限界 (練習 6.18)の別の証明を得ることが出来る。
+    \begin{block}{定理 7.23}
+      $\mathcal{C}$が線形符号で符号長$n$、次元$k$、最小距離$d$を持つ場合、
+      \[ d \leq 1 + n - k \]
+      となる
+    \end{block}
+    \begin{block}{証明}
+    同値な符号を使うことで、$\mathcal{C}$は組織符号形式の生成行列$G = \begin{pmatrix}
+      I_k & \mid & P
+  \end{pmatrix}$を持つとみなせる。よって$G$の各行は非零の符号語で重みは最大で$1 + n - k$となる。 \\
+  これは ($I_k$中の)ちょうど1桁の情報桁と ($P$中の)$n-k$桁の検査桁を持ち、 \\
+  そのため、その多くとも$1 + n - k$桁は非零になる。\\ 
+  よって補題6.8から$d \leq 1 + n - k$となる。
+    \end{block}
+  \end{frame}
+  \begin{frame}{例}
+    \begin{block}{例 7.24}
+      $\mathcal{R}_n$は$k=1$かつ$d=n$でシングルトン限界に達し、$\mathcal{P}_n$は$k = n - 1$かつ$d=2$でシングルトン限界に達するが、 \\
+      $\mathcal{H}_7$は$d=3$かつ$1 + n - k = 4$でシングルトン限界に達さない。
+    \end{block}
+  \end{frame}
+  \begin{frame}{系 7.24}
+    \begin{block}{系 7.24}
+      $t$重誤り訂正線形$\lbrack n,k \rbrack$符号は少なくとも$2t$桁の検査桁を持つ。
+    \end{block}
+    \begin{block}{証明}
+      この符号は$n-k$桁の情報桁をもち、定理 7.23と定理 6.10から $n - k \geq d - 1 \geq 2t$を得る。
+    \end{block}
+    \begin{block}{例 7.26}
+      線形符号$\mathcal{R}_3$と$\mathcal{H}_7$はともに$t=1$を持ち、 \\
+      それぞれ検査桁を$n - k$桁、つまり2桁と3桁持つ。
+    \end{block}
+  \end{frame}
 \end{document}
