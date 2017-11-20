@@ -4,16 +4,18 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{newtxtext}
-\title{Matrix Description of Linear Codes}
+\title{Equivalence of Linear Codes}
 \author{Mitsuru Takigahira}
-\date[2017/11/20]{}
+\date[2017/11/24]{}
 
 \begin{document}
   \frame{\maketitle}
   \begin{frame}{TL;DR}
-    線形空間は一般に一意の基底をもつわけではないため、線形符号$\mathcal{C}$生成行列$G$とパリティ検査行列$H$は一般に一意でない。
+    線形空間は一般に一意の基底をもつわけではないため、 \\ 
+    線形符号$\mathcal{C}$の生成行列$G$とパリティ検査行列$H$は一般に一意でない。
 
-    $G$及び$H$の形式を可能な限り簡単にすることは実用的であり、例えば$0$の要素が多いほど、計算がより簡単になる。
+    $G$及び$H$の形式を可能な限り簡単にすることは実用的であり、\\
+    例えば$0$の要素が多いほど、計算がより簡単になる。
   \end{frame}
 
   \begin{frame}{行基本変形による生成行列の変更}
@@ -153,7 +155,7 @@
       \end{pmatrix}  \]
       となる。これは例 7.11のパリティ検査行列とは異なるが、 \\
       同じ$\mathcal{R}_n$に対するパリティ検査方程式の組、つまり
-      \[-v_1 + v_i = 0 \ \text{for} \ 2, \ldots, n\]
+      \[-v_1 + v_i = 0 \ \text{for} \ i  = 2, \ldots, n\]
       を与える。
     \end{block}
   \end{frame}
