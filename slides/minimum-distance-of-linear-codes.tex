@@ -1,0 +1,127 @@
+\documentclass[dvipdfmx,10pt,jsarticle]{beamer}
+\usetheme{CambridgeUS}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{newtxtext}
+\title{Minimum Distance of Linear Codes}
+\author{Mitsuru Takigahira}
+\date[2017/12/01]{}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\code}[1]{\mathcal{#1}}
+\newcommand{\vs}[1]{\mathcal{#1}}
+\newcommand{\sets}[1]{\lbrace{}  #1 \rbrace}
+\newcommand{\bracket}[1]{\lbrack{} #1 \rbrack}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\begin{document}
+  \frame{\maketitle}
+
+  \begin{frame}{TL;DR}
+    この節ではパリティ検査行列から線形符号の最小距離を得る方法を示す。
+  \end{frame}
+
+  \begin{frame}{定理 7.27}
+    \begin{block}{定理 7.27}
+      $\code{C}$を最小距離$d$の線形符号, $H$を$\code{C}$のパリティ検査行列とおく。 \\
+      このとき、$d$は線形従属となる$H$の列の最小個数となる。
+    \end{block}
+    \begin{block}{証明}
+      補題 7.10から$\vec{v} = v_1\ldots v_n \in \vs{V}$が符号語であることは、\\
+      $\vec{v}H^T = \vec{0}$あるいは$\vec{c}_1, \ldots, \vec{c}_n$を$H$の各列として$\sum_{i} v_i \vec{c}_i$となることと同値である。 \\
+      $\vec{v} \neq \vec{0}$の場合、この式は列に対する線形従属関係となっていて、  \\
+      逆にどんな列に対する線形従属関係も非零な符号語$\vec{v}$に対応している。つまり、 \\
+      $\vec{v}$の非零な要素$v_i$の個数が式に現れる列の数であり、これは$\vec{v}$の重みである。 \\
+      よって、$H$の線形従属な列の最小個数が非零な符号語の最小重みに等しく、補題 6.8からこれは$d$である
+    \end{block}
+  \end{frame}
+  \begin{frame}{1つあるいは2つの列が線形従属である場合}
+    いくつかの例の前に$H$の1つ又は2つの列が線形従属となる意味を確認しよう。 \\
+    \vspace{1em}
+    単一の列$\vec{c}_i$が線形従属であるのは非零な$v_i$に対して$v_i \vec{c}_i = \vec{0}$となるときであり、 \\
+    両辺に$v_i^{-1}$ ($\F$は体より存在する)をかけると、$\vec{c}_i = \vec{0}$と同値であることがわかる。 \\
+    よって、定理 7.27から$d=1$と$H$が$\vec{0}$を列に持つことは同値である。 \\
+    \vspace{1em}
+    2つの列$\vec{c}_i, \vec{c}_j$が線形従属であるのは、共に非零な$v_i, v_j$に対して \\
+    $v_i \vec{c}_i + v_j \vec{c}_j = \vec{0}$となることと同値で、よって条件を
+    $a = - v_j / v_i \in \F \backslash \sets{0}$として$\vec{c}_i = a \vec{c}_j$と書き換えることが出来る。 \\
+    よって、2つの非零な列が線形従属であるのは、それぞれ一方が他方の定数倍であることと同値である。 
+    (部分的には $q=2$のとき$a \neq 0$ならば$a = 1$のみで、よって2元の場合、2つの非零列が線形従属となる$\Leftrightarrow$それぞれの列が等しい)\\
+    \vspace{1em}
+    定理 7.27から \\
+    \begin{center}
+      $d \geq 3$ $\Leftrightarrow$ $H$の列がすべて非零で、一方が他方の定数倍でない。 \\
+    \end{center}
+  2元の場合、この右側は「$H$の各列が非零かつ互いに素である」と簡略化される。
+  \end{frame}
+
+  \begin{frame}{例}
+    \begin{block}{例 7.28}
+      $\code{P}_n$のパリティ検査行列$H = \begin{pmatrix} 1 & 1 & \cdots & 1 \end{pmatrix}$の各列は非零で互いに等しいので、最小距離$d$は$d = 2$である。
+    \end{block}
+    \begin{block}{例 7.29}
+      $\code{R}_n$のパリティ検査行列
+      \[
+        \begin{pmatrix}
+          1 &   &   &   &  -1 \\
+            & 1 &   &   &  -1 \\
+            &   & \ddots &   & -1 \\
+            &   &   & 1 & -1
+        \end{pmatrix}
+      \]
+        はどんな$n-1$個の列も線形独立で、同時に$\vec{c}_1 + \cdots + \vec{c}_n = \vec{0}$となる。 \\ 
+        (これは符号語$\vec{1} = 11\ldots 1 \in \code{R}_n$に対応する)よって$d = n$である。
+    \end{block}
+  \end{frame}
+  \begin{frame}{例}
+    \begin{block}{例 7.30}
+      2元ハミング符号$\code{H}_7$は以下のパリティ検査行列を持ち
+      \[ \begin{pmatrix}
+          0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+          0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+          1 & 0 & 1 & 0 & 1 & 0 & 1 
+      \end{pmatrix} \]
+      各列は非零で互いに素より$d \geq 3$、つまり重み1または2の符号語は存在しない。 \\
+      しかし、$\vec{c}_1 + \vec{c}_2 + \vec{c}_3 = \vec{0} $で、3個の線形従属な列があり、 \\
+      これは$\vec{v} = 1110000$が重み3の符号語になる事実に対応している。 \\
+      (これは例 6.5で扱った$\code{H}_7$の基底$\vec{u}_1$である) \\
+      よって、$\code{H}_7$は最小距離$d = 3$を持つ。
+    \end{block}
+  \end{frame}
+
+  \begin{frame}{シングルトン限界の別証明}
+    パリティ検査行列からシングルトン限界 (定理 7.23)の別証明を与えられる。 \\
+    もし$H$が線形 $\bracket{n, k}$符号のパリティ検査行列ならば、$n - k$行は線形独立で、\\
+    どんな行列も行と列の階数は等しく、よって$H$は$n-k$個の独立な列を持ち、 \\
+    同時にすべての$n - k + 1$個の列の組は線形従属となる。 \\
+    よって定理 7.27から$d \leq n - k + 1$を得る。
+  \end{frame}
+
+  \begin{frame}{系 7.31}
+    \begin{block}{系 7.31}
+      $\F$上の $t$重誤り訂正$\bracket{n,k}$符号が存在することは、$\F$上に \\
+      \begin{itemize}
+        \item 階数$n-k$
+        \item そのすべての$2t$個の列の組が線形従属である
+      \end{itemize}
+      を満たす$(n - k) \times n$行列が存在することと同値である
+    \end{block}
+    \begin{block}{証明 ($\Rightarrow$)}
+      題意を満たす符号$\code{C}$が与えられ、$H$が$\code{C}$のパリティ検査行列となるとする。 \\
+      このとき、$H$は$n$列と$n-k$個の独立な行を持つ。 \\
+      定理 6.10から$\code{C}$は最小距離 $d \geq 2t + 1$を持ち、 \\
+      定理 7.27からすべての$d - 1$個以下の列の組は線形独立となる。 \\
+      よってすべての$2t$個の列の組は線形独立となる。
+    \end{block}
+  \end{frame}
+  \begin{frame}{系 7.31}
+    \begin{block}{証明 ($\Leftarrow$)}
+      題意を満たす行列$H$が存在し、 \\
+      $\vs{V} = \F^n$、$\code{C} = \sets{\vec{v} \in \vs{V} \mid \vec{v} H^T = \vec{0}}$なる$\F$上の符号長$n$の線形符号とおく。 \\
+      $H$は階数$n-k$をもち、その$n-k$行は線形独立であるため、$\code C$は次元$k$を持つ。 \\
+      仮定より、$H$のすべての線形従属な列は少なくとも$2t+1$個の列を含む。 \\
+      よって定理 7.27は$\code{C}$が最小距離$d \geq 2t + 1$を持つことを示していて、\\
+      そしてそれ故に定理 6.10から$\code{C}$は$t$個の誤りを訂正する。
+    \end{block}
+  \end{frame}
+\end{document}
