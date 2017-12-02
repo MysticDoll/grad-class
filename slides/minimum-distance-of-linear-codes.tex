@@ -28,7 +28,7 @@
     \end{block}
     \begin{block}{証明}
       補題 7.10から$\vec{v} = v_1\ldots v_n \in \vs{V}$が符号語であることは、\\
-      $\vec{v}H^T = \vec{0}$あるいは$\vec{c}_1, \ldots, \vec{c}_n$を$H$の各列として$\sum_{i} v_i \vec{c}_i$となることと同値である。 \\
+      $\vec{v}H^T = \vec{0}$あるいは$\vec{c}_1, \ldots, \vec{c}_n$を$H$の各列として$\sum_{i} v_i \vec{c}_i = \vec{0}$となることと同値である。 \\
       $\vec{v} \neq \vec{0}$の場合、この式は列に対する線形従属関係となっていて、  \\
       逆にどんな列に対する線形従属関係も非零な符号語$\vec{v}$に対応している。つまり、 \\
       $\vec{v}$の非零な要素$v_i$の個数が式に現れる列の数であり、これは$\vec{v}$の重みである。 \\
@@ -50,7 +50,7 @@
     \vspace{1em}
     定理 7.27から \\
     \begin{center}
-      $d \geq 3$ $\Leftrightarrow$ $H$の列がすべて非零で、一方が他方の定数倍でない。 \\
+      $d \geq 3$ $\Leftrightarrow$ $H$の列がすべて非零で、2つの列の組が一方が他方の定数倍でない。 \\
     \end{center}
   2元の場合、この右側は「$H$の各列が非零かつ互いに素である」と簡略化される。
   \end{frame}
@@ -99,10 +99,10 @@
 
   \begin{frame}{系 7.31}
     \begin{block}{系 7.31}
-      $\F$上の $t$重誤り訂正$\bracket{n,k}$符号が存在することは、$\F$上に \\
+      $\F$上の $t$重誤り訂正線形$\bracket{n,k}$符号が存在することは、$\F$上に \\
       \begin{itemize}
         \item 階数$n-k$
-        \item そのすべての$2t$個の列の組が線形従属である
+        \item そのすべての$2t$個の列の組が線形独立である
       \end{itemize}
       を満たす$(n - k) \times n$行列が存在することと同値である
     \end{block}
