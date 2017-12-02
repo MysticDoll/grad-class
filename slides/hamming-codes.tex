@@ -1,0 +1,62 @@
+\documentclass[dvipdfmx,10pt,jsarticle]{beamer}
+\usetheme{CambridgeUS}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{newtxtext}
+\title{The Hamming Codes}
+\author{Mitsuru Takigahira}
+\date[2017/12/01]{}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\code}[1]{\mathcal{#1}}
+\newcommand{\vs}[1]{\mathcal{#1}}
+\newcommand{\sets}[1]{\lbrace{}  #1 \rbrace}
+\newcommand{\bracket}[1]{\lbrack{} #1 \rbrack}
+\newcommand{\vcode}[2]{$\bracket{#1 , #2}$}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\begin{document}
+  \frame{\maketitle}
+  \begin{frame}{TL;DR}
+    ハミング\vcode74符号$\code{H}_7$は1重誤り訂正完全2元符号で、伝送速度$\frac 47$である。 \\
+    実際これは1重誤り訂正2元符号の無限列のうちの1つであり、\\
+    この列は符号長$n$が増えるほど伝送速度$R$は1に近づく。 \\
+    この符号はハミングによって1950年に考案された\footnote{[Ha50]}が、 \\
+    ゴレイも同時期に独自にこれらを発見した \\
+    (どちらが先に発見されたかの議論については[Th83]を見よ。)
+  \end{frame}
+
+  \begin{frame}{ハミング符号の構成}
+    １重誤り訂正2元符号に対して、ハミングの球充填限界式 (系 6.17)において\\
+    $t = 1$及び$q = 2$とおくため、 完全符号に対して以下の条件が成立する。
+    \[ 2^{n-k} = 1 + \binom n 1 = n + 1 \]
+    $c = n-k$ (検査桁の桁数)とおけば、この条件は以下の式と同値である
+    \[ n = 2^c - 1 \ \eqno{(7.4)} \]
+    $k = n - c = 2^c - c$なので、$n$及び$k$のとりうる値は次のようになる。
+    \begin{align*}
+      \begin{array}{cccccccc}
+        c & = & 1 & 2 & 3 & 4 & 5 & \cdots \\
+        n & = & 1 & 3 & 7 & 15 & 31 & \cdots \\
+        k & = & 0 & 1 & 4 & 11 & 26 & \cdots 
+      \end{array}
+    \end{align*}
+  \end{frame}
+  \begin{frame}{ハミング符号の構成}
+    このようなパラメータに対して符号を構成しよう。 \\
+    $t = 1$とおき、系 7.31からそのような符号$\code{C}$が存在することは \\
+    \begin{itemize}
+      \item 階数$c$
+      \item すべての2つの列の組が線形独立となっている
+    \end{itemize}
+    なる$c \times n$行列$H$が$\F_2$上に存在することと同値で、$\F = \F_2 = \sets{0, 1}$より、
+    \begin{itemize}
+      \item $H$の任意の列$\vec{c}_i$が非零
+      \item $H$のすべての列が互いに異なっている
+    \end{itemize}
+    つまり$H$は互いに異なる$n = 2^c - 1$個の非零な長さ$c$の列ベクトルからなる。 \\
+    このとき、$2^c$個の相異なる長さ$c$の2元ベクトルのみが存在し、列$\vec{c}_i$の選択は存在しない。
+    これらは何らかの順の非零な長さ$c$の列すべて ($2^c-1$個)になる。 \\
+    ($c = 3$の場合については例 7.3を見よ)
+  \end{frame}
+
+\end{document}
